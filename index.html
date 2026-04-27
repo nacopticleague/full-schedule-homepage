@@ -5,51 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 NA Coptic League — Full Schedule</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { overflow-y: auto; }
-body { font-family: Arial, sans-serif; background: #c9b5a5; margin: 0; padding: 0; }
-.dg:last-child { margin-bottom: 0; }
-.header { background: #7d1a1a; padding: 22px 20px; text-align: center; }
-.header h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #e07878; font-weight: 700; }
-.notice { padding: 10px 16px; font-size: 0.78rem; font-weight: 600; color: #5c1010; background: #e8ddd3; text-align: center; border-bottom: 1px solid #d0bfaf; }
-.filters { background: #d8c8ba; border-bottom: 2px solid #b8a492; padding: 14px 16px; }
-.filter-row { display: flex; gap: 12px; flex-wrap: wrap; max-width: 660px; margin: 0 auto; }
-.fg { flex: 1; min-width: 140px; }
-.fg label { display: block; font-size: 0.7rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
-.fg select { width: 100%; padding: 9px 12px; border: 2px solid #b8a492; border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
-.fg select:focus { outline: 2px solid #7d1a1a; }
-.main { max-width: 660px; margin: 0 auto; padding: 18px 14px 10px; }
-.empty { background: #fff; border-radius: 10px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.1); }
-.empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
-.empty h3 { font-family: Georgia, serif; color: #7d1a1a; font-size: 1rem; margin-bottom: 6px; }
-.empty p { font-size: 0.85rem; color: #555; line-height: 1.6; }
-.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
-.badge { display: inline-flex; align-items: center; gap: 6px; background: #7d1a1a; color: #fff; padding: 5px 13px 5px 9px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
-.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #e07878; }
-.cnt { font-size: 0.76rem; color: #5c1010; font-weight: 600; }
-.dg { margin-bottom: 20px; }
-.dh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.dlabel { font-family: Georgia, serif; font-size: 0.8rem; font-weight: 700; color: #5c1010; white-space: nowrap; }
-.dcount { font-size: 0.7rem; font-weight: 700; color: #fff; background: #7d1a1a; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
-.dline { flex: 1; height: 1px; background: #b8a492; }
-.card { background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(80,20,20,.1); padding: 13px 15px; margin-bottom: 9px; border-left: 4px solid #7d1a1a; display: flex; align-items: center; gap: 13px; }
-.tcol { text-align: center; min-width: 120px; flex-shrink: 0; }
-.thour { font-family: Georgia, serif; font-size: 0.82rem; font-weight: 700; color: #7d1a1a; line-height: 1.4; }
-.divdr { width: 1px; height: 48px; background: #c9b5a5; flex-shrink: 0; }
-.mcol { flex: 1; min-width: 0; }
-.teams { font-weight: 700; font-size: 0.93rem; color: #222; }
-.teams .sep { color: #7d1a1a; margin: 0 4px; }
-.venue { display: inline-flex; align-items: center; gap: 4px; font-size: 0.7rem; font-weight: 600; margin-top: 3px; }
-.venue a { color: #2d3a8c; text-decoration: underline; }
-.div-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f0e6dd; color: #7d1a1a; letter-spacing: .04em; text-transform: uppercase; margin-left: 8px; }
-.meta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0; margin-top: 3px; }
-.footer { text-align: center; padding: 13px; font-family: Georgia, serif; font-size: 0.72rem; color: #5c1010; border-top: 1px solid #b8a492; background: #d8c8ba; }
-@media(max-width:480px){ .filter-row{flex-direction:column;} .fg{min-width:100%;} }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+html{overflow-y:auto;}
+body{font-family:'Source Sans 3',sans-serif;background:#ffffff;margin:0;padding:0;display:flex;flex-direction:column;min-height:100vh;}
+
+/* ── Header ── */
+.header{background:#7d1a1a;padding:26px 20px 22px;text-align:center;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#c9b5a5,#e07878,#c9b5a5);}
+.header h1{font-family:'Playfair Display',Georgia,serif;font-size:1.55rem;color:#e8b4b4;font-weight:800;letter-spacing:.02em;}
+.header .sub{font-size:.72rem;color:#c98a8a;margin-top:4px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+
+/* ── Notice ── */
+.notice{padding:10px 16px;font-size:.78rem;font-weight:600;color:#5c1010;background:#e8ddd3;text-align:center;border-bottom:1px solid #d0bfaf;}
+
+/* ── Filters ── */
+.filters{background:#d8c8ba;border-bottom:2px solid #b8a492;padding:16px 16px 14px;}
+.filter-row{display:flex;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto;}
+.fg{flex:1;min-width:140px;}
+.fg label{display:block;font-size:.68rem;font-weight:700;color:#5c1010;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Source Sans 3',sans-serif;}
+.fg select{width:100%;padding:9px 12px;border:2px solid #b8a492;border-radius:6px;font-size:.88rem;font-weight:600;color:#5c1010;background:#fff;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:border-color .2s;}
+.fg select:focus{outline:none;border-color:#7d1a1a;box-shadow:0 0 0 3px rgba(125,26,26,.15);}
+
+/* ── Main ── */
+.main{flex:1;width:100%;}
+.main #out{max-width:700px;margin:0 auto;padding:18px 14px 10px;}
+
+/* ── Empty state ── */
+.empty{background:#fff;border-radius:10px;text-align:center;padding:44px 20px;box-shadow:0 2px 10px rgba(80,20,20,.08);}
+.empty .icon{font-size:2.4rem;margin-bottom:10px;}
+.empty h3{font-family:'Playfair Display',Georgia,serif;color:#7d1a1a;font-size:1rem;margin-bottom:6px;}
+.empty p{font-size:.85rem;color:#555;line-height:1.6;}
+
+/* ── Stats bar ── */
+.statsbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#7d1a1a;color:#fff;padding:5px 13px 5px 9px;border-radius:20px;font-size:.82rem;font-weight:700;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#e07878;}
+.cnt{font-size:.76rem;color:#5c1010;font-weight:600;}
+.cnt a{color:#2d3a8c;text-decoration:underline;}
+.cnt a:hover{color:#7d1a1a;}
+
+/* ── Day group ── */
+.dg{margin-bottom:20px;}
+.dg:last-child{margin-bottom:0;}
+.dh{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.dlabel{font-family:'Playfair Display',Georgia,serif;font-size:.8rem;font-weight:700;color:#5c1010;white-space:nowrap;}
+.dcount{font-size:.7rem;font-weight:700;color:#fff;background:#7d1a1a;padding:2px 9px;border-radius:10px;white-space:nowrap;}
+.dline{flex:1;height:1px;background:#b8a492;}
+
+/* ── Game card ── */
+.card{background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(80,20,20,.08);padding:6px 12px;margin-bottom:5px;border-left:4px solid #7d1a1a;display:flex;align-items:center;gap:10px;}
+.card:hover{background:#faf6f2;}
+.tcol{text-align:center;min-width:110px;flex-shrink:0;}
+.thour{font-family:'Playfair Display',Georgia,serif;font-size:.72rem;font-weight:700;color:#7d1a1a;line-height:1.3;}
+.divdr{width:1px;height:28px;background:#d8c8ba;flex-shrink:0;}
+.mcol{flex:1;min-width:0;}
+.teams{font-weight:700;font-size:.82rem;color:#222;}
+.teams .sep{color:#7d1a1a;margin:0 4px;}
+.div-tag{display:inline-block;font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:4px;background:#f0e6dd;color:#7d1a1a;letter-spacing:.04em;text-transform:uppercase;margin-left:6px;}
+
+@media(max-width:520px){
+  .filter-row{flex-direction:column;}
+  .fg{min-width:100%;}
+  .tcol{min-width:90px;}
+  .card{gap:8px;padding:5px 10px;}
+}
 </style>
 </head>
 <body>
 
-<div class="header"><h1>2026 Season — Full Schedule</h1></div>
+<div class="header">
+  <h1>2026 Season — Full Schedule</h1>
+  <div class="sub">NA Coptic League &middot; May – July 2026</div>
+</div>
 
 <div class="notice">Games are still being added — the full and completed schedule will be displayed no later than May 2, 2026.</div>
 
@@ -63,10 +91,10 @@ body { font-family: Arial, sans-serif; background: #c9b5a5; margin: 0; padding: 
       <label>Division</label>
       <select id="fdiv" onchange="render()">
         <option value="">All Divisions</option>
+        <option value="JHS">Junior High School (JHS)</option>
+        <option value="Girls">Girls</option>
         <option value="HS-NY">High School — NY</option>
         <option value="HS-NJ">High School — NJ</option>
-        <option value="JHS">Junior High (JHS)</option>
-        <option value="Girls">Girls</option>
         <option value="College">College</option>
         <option value="Mens">Mens</option>
       </select>
@@ -74,9 +102,10 @@ body { font-family: Arial, sans-serif; background: #c9b5a5; margin: 0; padding: 
     <div class="fg">
       <label>Venue</label>
       <select id="fvenue" onchange="render()">
-        <option value="">All Venues</option>
         <option value="HC">Holy Child Catholic Church</option>
         <option value="BK">St. George Community Center</option>
+        <option value="EB">St. Mark Coptic Christian Academy</option>
+        <option value="LI">St. Mark Coptic Center LI</option>
       </select>
     </div>
   </div>
@@ -86,37 +115,42 @@ body { font-family: Arial, sans-serif; background: #c9b5a5; margin: 0; padding: 
   <div class="empty"><div class="icon">🏀</div><h3>Loading Schedule&hellip;</h3><p>All games will appear here.</p></div>
 </div></div>
 
-<div class="footer">NA Coptic League 2026 &nbsp;&middot;&nbsp; Regular Season &nbsp;&middot;&nbsp; May 2026 – July 2026</div>
-
 <script>
 var VENUES = {
   HC: { name: "Holy Child Catholic Church", url: "https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312" },
-  BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" }
+  BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" },
+  EB: { name: "St. Mark Coptic Christian Academy", url: "https://maps.google.com/?q=80+David+St,+South+River,+NJ+08882" },
+  LI: { name: "St. Mark Coptic Center LI", url: "https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797" }
 };
 
 var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
 
 var GAMES = [
-  {t1:"SI 1 1",t2:"SI 2 1",div:"HS-NY",date:"2026-05-03",time:"8:00 PM",v:"HC"},
-  {t1:"SI 2 2",t2:"SI 1 2",div:"HS-NY",date:"2026-05-02",time:"6:00 PM",v:"HC"},
-  {t1:"BK 1",t2:"BK 2",div:"HS-NY",date:"2026-05-02",time:"7:00 PM",v:"BK"},
-  {t1:"Astoria",t2:"Queens",div:"HS-NY",date:"2026-05-02",time:"2:00 PM",v:"BK"},
-  {t1:"Bayonne SASA 1",t2:"Belleville",div:"HS-NJ",date:"2026-05-03",time:"4:00 PM",v:"HC"},
-  {t1:"Holmdel",t2:"Westside",div:"HS-NJ",date:"2026-05-02",time:"4:00 PM",v:"HC"},
-  {t1:"Upstate Paramus",t2:"Piscataway",div:"HS-NJ",date:"2026-05-03",time:"6:00 PM",v:"HC"},
+  /* ── May 2 — BK (St. George Community Center) ── */
+  {t1:"Queens",t2:"SI2",div:"College",date:"2026-05-02",time:"12:00 PM",v:"BK"},
   {t1:"Queens",t2:"Astoria",div:"JHS",date:"2026-05-02",time:"1:00 PM",v:"BK"},
-  {t1:"Westside",t2:"Bayonne SASA",div:"JHS",date:"2026-05-02",time:"2:00 PM",v:"HC"},
-  {t1:"SI 1",t2:"Queens",div:"JHS",date:"2026-05-02",time:"3:00 PM",v:"BK"},
-  {t1:"Astoria",t2:"SI 2",div:"JHS",date:"2026-05-02",time:"4:00 PM",v:"BK"},
-  {t1:"SI 1",t2:"SI 2",div:"Girls",date:"2026-05-02",time:"8:00 PM",v:"HC"},
-  {t1:"BK",t2:"Queens",div:"Girls",date:"2026-05-02",time:"5:00 PM",v:"BK"},
-  {t1:"Holmdel",t2:"Belleville",div:"Girls",date:"2026-05-03",time:"5:00 PM",v:"HC"},
-  {t1:"BK",t2:"Bayonne VMSJ",div:"College",date:"2026-05-02",time:"6:00 PM",v:"BK"},
-  {t1:"Philly",t2:"Holmdel",div:"College",date:"2026-05-02",time:"5:00 PM",v:"HC"},
-  {t1:"Piscataway",t2:"Bayonne SASA",div:"College",date:"2026-05-03",time:"3:00 PM",v:"HC"},
-  {t1:"SI 2",t2:"Queens",div:"Mens",date:"2026-05-02",time:"12:00 PM",v:"BK"},
-  {t1:"SI 2",t2:"Holmdel",div:"Mens",date:"2026-05-02",time:"7:00 PM",v:"HC"},
-  {t1:"SI 1",t2:"Bayonne SASA",div:"Mens",date:"2026-05-03",time:"7:00 PM",v:"HC"}
+  {t1:"Queens",t2:"Astoria",div:"HS-NY",date:"2026-05-02",time:"2:00 PM",v:"BK"},
+  {t1:"SI1",t2:"Queens",div:"JHS",date:"2026-05-02",time:"3:00 PM",v:"BK"},
+  {t1:"SI2",t2:"Astoria",div:"JHS",date:"2026-05-02",time:"4:00 PM",v:"BK"},
+  {t1:"Brooklyn",t2:"Queens",div:"Girls",date:"2026-05-02",time:"5:00 PM",v:"BK"},
+  {t1:"Brooklyn",t2:"Bayonne 2 (VMSJ)",div:"College",date:"2026-05-02",time:"6:00 PM",v:"BK"},
+  {t1:"Brooklyn (1)",t2:"Brooklyn (2)",div:"HS-NY",date:"2026-05-02",time:"7:00 PM",v:"BK"},
+
+  /* ── May 2 — HC (Holy Child Catholic Church) ── */
+  {t1:"SI1",t2:"Bayonne 1 (SASA)",div:"Mens",date:"2026-05-02",time:"4:00 PM",v:"HC"},
+  {t1:"Philadelphia",t2:"Holmdel",div:"College",date:"2026-05-02",time:"5:00 PM",v:"HC"},
+  {t1:"SI1 (2)",t2:"SI2 (2)",div:"HS-NY",date:"2026-05-02",time:"6:00 PM",v:"HC"},
+  {t1:"SI2",t2:"Holmdel",div:"Mens",date:"2026-05-02",time:"7:00 PM",v:"HC"},
+  {t1:"SI1",t2:"SI2",div:"Girls",date:"2026-05-02",time:"8:00 PM",v:"HC"},
+
+  /* ── May 3 — HC (Holy Child Catholic Church) ── */
+  {t1:"West Side",t2:"Bayonne 1 (SASA)",div:"JHS",date:"2026-05-03",time:"2:00 PM",v:"HC"},
+  {t1:"Piscataway",t2:"Bayonne 1 (SASA)",div:"College",date:"2026-05-03",time:"3:00 PM",v:"HC"},
+  {t1:"Bayonne 1 (SASA)",t2:"Belleville",div:"HS-NJ",date:"2026-05-03",time:"4:00 PM",v:"HC"},
+  {t1:"Belleville",t2:"Holmdel",div:"Girls",date:"2026-05-03",time:"5:00 PM",v:"HC"},
+  {t1:"Upstate",t2:"Piscataway",div:"HS-NJ",date:"2026-05-03",time:"6:00 PM",v:"HC"},
+  {t1:"West Side",t2:"Holmdel",div:"HS-NJ",date:"2026-05-03",time:"7:00 PM",v:"HC"},
+  {t1:"SI1 (1)",t2:"SI2 (1)",div:"HS-NY",date:"2026-05-03",time:"8:00 PM",v:"HC"}
 ];
 
 function addHour(time) {
@@ -128,6 +162,7 @@ function addHour(time) {
   var endH = h + 1;
   var endAmpm = ampm;
   if (h === 11 && ampm === 'AM') { endAmpm = 'PM'; }
+  if (h === 11 && ampm === 'PM') { endAmpm = 'AM'; }
   if (endH > 12) { endH = endH - 12; }
   return parts[0] + ' ' + ampm + ' – ' + endH + ':' + m + ' ' + endAmpm;
 }
@@ -186,7 +221,11 @@ function render() {
   });
 
   if (!filtered.length) {
-    out.innerHTML = '<div class="empty"><div class="icon">📅</div><h3>No Games Found</h3><p>Try adjusting your filters above.</p></div>';
+    var emptyVenue = VENUES[venF] ? VENUES[venF].name : '';
+    var emptyDate = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
+    var emptyMsg = emptyVenue ? 'No games currently scheduled' + emptyDate + ' at ' + emptyVenue + '.' : 'No games found — try a different filter!';
+    var emptyTip = 'Try selecting a different date or venue, or check back later as games are still being added.';
+    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + emptyMsg + '</h3><p>' + emptyTip + '</p></div>';
     return;
   }
 
@@ -195,10 +234,11 @@ function render() {
   var dates = Object.keys(byDate).sort();
 
   var totalGames = filtered.length;
-  var venueLabel = venF ? VENUES[venF].name : 'All Venues';
+  var vn = VENUES[venF];
   var divLabel = divF ? (DIV_LABELS[divF] || divF) : 'All Divisions';
+  var venueLink = vn ? '<a href="' + vn.url + '" target="_blank">' + vn.name + ' — click here for directions</a>' : '';
 
-  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + totalGames + ' game' + (totalGames !== 1 ? 's' : '') + ' &middot; ' + venueLabel + '</div></div>';
+  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + totalGames + ' game' + (totalGames !== 1 ? 's' : '') + ' &middot; ' + venueLink + '</div></div>';
 
   dates.forEach(function(date) {
     var games = byDate[date].sort(timeSort);
@@ -207,11 +247,9 @@ function render() {
 
     games.forEach(function(g) {
       var timeRange = addHour(g.time);
-      var vn = VENUES[g.v];
-      var vhtml = vn ? '<div class="venue">📍 <a href="' + vn.url + '" target="_blank">' + vn.name + '</a></div>' : '';
       var dtag = '<span class="div-tag">' + DIV_LABELS[g.div] + '</span>';
 
-      h += '<div class="card"><div class="tcol"><div class="thour">' + timeRange + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + g.t1 + '<span class="sep">vs.</span>' + g.t2 + '</div><div class="meta-row">' + vhtml + dtag + '</div></div></div>';
+      h += '<div class="card"><div class="tcol"><div class="thour">' + timeRange + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + g.t1 + '<span class="sep">vs.</span>' + g.t2 + dtag + '</div></div></div>';
     });
     h += '</div>';
   });
@@ -222,14 +260,14 @@ function render() {
 buildDateFilter();
 render();
 
-// Auto-resize for iframe embedding — tells parent the content height
-function postHeight() {
-  var h = document.documentElement.scrollHeight;
+/* ── Iframe auto-resize ── */
+function broadcastHeight() {
+  var h = document.body.scrollHeight;
   window.parent.postMessage({ type: 'resize', height: h }, '*');
 }
-window.addEventListener('load', postHeight);
-window.addEventListener('resize', postHeight);
-new MutationObserver(postHeight).observe(document.body, { childList: true, subtree: true });
+window.addEventListener('load', broadcastHeight);
+new MutationObserver(broadcastHeight).observe(document.body, { childList: true, subtree: true });
+setInterval(broadcastHeight, 500);
 </script>
 </body>
 </html>

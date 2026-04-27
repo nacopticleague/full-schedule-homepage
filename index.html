@@ -6,7 +6,9 @@
 <title>2026 NA Coptic League — Full Schedule</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; background: #c9b5a5; }
+html { overflow-y: auto; }
+body { font-family: Arial, sans-serif; background: #c9b5a5; margin: 0; padding: 0; }
+.dg:last-child { margin-bottom: 0; }
 .header { background: #7d1a1a; padding: 22px 20px; text-align: center; }
 .header h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #e07878; font-weight: 700; }
 .notice { padding: 10px 16px; font-size: 0.78rem; font-weight: 600; color: #5c1010; background: #e8ddd3; text-align: center; border-bottom: 1px solid #d0bfaf; }
@@ -16,7 +18,7 @@ body { font-family: Arial, sans-serif; background: #c9b5a5; }
 .fg label { display: block; font-size: 0.7rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
 .fg select { width: 100%; padding: 9px 12px; border: 2px solid #b8a492; border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
 .fg select:focus { outline: 2px solid #7d1a1a; }
-.main { max-width: 660px; margin: 0 auto; padding: 18px 14px 36px; }
+.main { max-width: 660px; margin: 0 auto; padding: 18px 14px 10px; }
 .empty { background: #fff; border-radius: 10px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.1); }
 .empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
 .empty h3 { font-family: Georgia, serif; color: #7d1a1a; font-size: 1rem; margin-bottom: 6px; }
@@ -219,6 +221,15 @@ function render() {
 
 buildDateFilter();
 render();
+
+// Auto-resize for iframe embedding — tells parent the content height
+function postHeight() {
+  var h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ type: 'resize', height: h }, '*');
+}
+window.addEventListener('load', postHeight);
+window.addEventListener('resize', postHeight);
+new MutationObserver(postHeight).observe(document.body, { childList: true, subtree: true });
 </script>
 </body>
 </html>

@@ -180,7 +180,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#ffffff;margin:0;padding:
   <div class="sub">NA Coptic League &middot; May – July 2026</div>
 </div>
 
-<div class="notice">Games are still being added — the full and completed schedule will be displayed no later than May 2, 2026.</div>
+<div class="notice">Games are still being added </div>
 
 <div class="filters">
   <div class="filter-row">
@@ -367,7 +367,7 @@ function render() {
     var emptyVenue = VENUES[venF] ? VENUES[venF].name : '';
     var emptyDate = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
     var emptyMsg = emptyVenue ? 'No games currently scheduled' + emptyDate + ' at ' + emptyVenue + '.' : 'No games found — try a different filter!';
-    var emptyTip = 'Try selecting a different date or venue, or check back later as games are still being added.';
+    var emptyTip = 'Try selecting a different date or venue, or check back later as games are still being added 🏀';
     out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + emptyMsg + '</h3><p>' + emptyTip + '</p></div>';
     return;
   }

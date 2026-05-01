@@ -5,187 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 NA Coptic League</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
-*{box-sizing:border-box;margin:0;padding:0;}
-html{overflow-y:auto;}
-body{font-family:'Source Sans 3',sans-serif;background:#f7f2ed;margin:0;padding:0;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-y: auto; }
+body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; }
 
-/* ── Shared: Dark banner sections ── */
-.dark-banner{background:#7d1a1a;padding:28px 20px;text-align:center;position:relative;}
-.dark-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#c9b5a5,#e07878,#c9b5a5);}
-.dark-banner h1,.dark-banner h2{font-family:'Playfair Display',Georgia,serif;color:#e8b4b4;font-weight:800;letter-spacing:.02em;}
-.dark-banner h1{font-size:1.8rem;line-height:1.3;}
-.dark-banner h2{font-size:1.4rem;line-height:1.4;}
-.dark-banner .sub{font-size:.72rem;color:#c98a8a;margin-top:4px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+/* ── Header ── */
+.header { background: #7d1a1a; padding: 22px 20px; text-align: center; }
+.header h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #e07878; font-weight: 700; }
 
-/* ── Shared: Light content sections ── */
-.content-block{background:#ffffff;border-bottom:1px solid #e0d5cb;padding:28px 20px;text-align:center;}
-.content-block .inner{max-width:700px;margin:0 auto;}
+/* ── Sections ── */
+.section { max-width: 660px; margin: 0 auto; padding: 24px 16px; border-bottom: 1px solid #d8c8ba; }
+.section:last-of-type { border-bottom: none; }
+.section-title { font-family: Georgia, serif; font-size: 1.1rem; color: #7d1a1a; font-weight: 700; text-align: center; margin-bottom: 12px; }
 
-/* ── Verse of the Day ── */
-.verse-block{background:#f7f2ed;padding:24px 20px;border-bottom:1px solid #e0d5cb;}
-.verse-card{max-width:700px;margin:0 auto;background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(80,20,20,.06);padding:22px 26px;border:1px solid #eee4dc;}
-.verse-label{font-size:.82rem;font-weight:700;color:#5c1010;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.verse-label .icon{font-size:1rem;}
-.verse-text{font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:#222;line-height:1.6;margin-bottom:8px;}
-.verse-ref{font-size:.85rem;color:#888;text-align:center;}
+/* ── Verse ── */
+.verse-text { font-family: Georgia, serif; font-size: 1rem; color: #222; line-height: 1.6; text-align: center; margin-bottom: 8px; }
+.verse-ref { font-size: 0.82rem; color: #888; text-align: center; }
 
-/* ── Welcome Section ── */
-.welcome-title{font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;color:#333;font-weight:700;margin-bottom:6px;}
-.welcome-title .emoji{font-size:1.2rem;}
-.welcome-hr{height:3px;background:#e07878;border:none;margin:12px 0 18px;}
-.content-block p{font-size:.95rem;color:#333;line-height:1.7;margin-bottom:14px;}
-.content-block a{color:#2d3a8c;font-weight:700;text-decoration:underline;}
-.content-block strong{color:#7d1a1a;}
-.content-block ul{margin:0 0 14px 0;padding:0;list-style-position:inside;font-size:.95rem;color:#333;line-height:1.8;}
-.content-block em{color:#333;}
+/* ── Welcome ── */
+.welcome p { font-size: 0.9rem; color: #333; line-height: 1.7; margin-bottom: 12px; text-align: center; }
+.welcome a { color: #2d3a8c; font-weight: 700; text-decoration: underline; }
+.welcome strong { color: #7d1a1a; }
+.welcome ul { margin: 0 0 12px 0; padding: 0; list-style-position: inside; font-size: 0.9rem; color: #333; line-height: 1.8; text-align: center; }
+.welcome em { color: #333; }
 
-/* ── Waiver Banner (clickable dark banner) ── */
-.waiver-banner{background:#7d1a1a;padding:22px 20px;text-align:center;display:block;text-decoration:none;transition:background .2s;position:relative;}
-.waiver-banner::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#c9b5a5,#e07878,#c9b5a5);}
-.waiver-banner:hover{background:#5c1010;}
-.waiver-banner h2{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;color:#fff;font-weight:700;line-height:1.4;}
-.waiver-banner .deadline{font-size:.8rem;color:#e8b4b4;margin-top:6px;font-weight:600;}
+/* ── Waiver ── */
+.waiver-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #7d1a1a; font-weight: 700; text-decoration: underline; margin-bottom: 6px; }
+.waiver-link:hover { color: #5c1010; }
+.waiver-deadline { font-size: 0.78rem; color: #888; text-align: center; }
 
-/* ── Rules Section ── */
-.rules-title{font-family:'Playfair Display',Georgia,serif;font-size:1rem;color:#7d1a1a;font-weight:700;}
-.rules-sub{font-size:.78rem;color:#888;margin-top:4px;}
-.rules-hr{height:3px;background:#7d1a1a;border:none;margin:16px auto;max-width:500px;}
-.rules-link{font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;color:#222;font-weight:700;text-decoration:none;}
-.rules-link:hover{color:#7d1a1a;text-decoration:underline;}
+/* ── Rules ── */
+.rules-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #222; font-weight: 700; text-decoration: none; }
+.rules-link:hover { color: #7d1a1a; text-decoration: underline; }
+.rules-sub { font-size: 0.75rem; color: #888; text-align: center; margin-top: 4px; }
 
 /* ── Notice ── */
-.notice{padding:10px 16px;font-size:.78rem;font-weight:600;color:#5c1010;background:#e8ddd3;text-align:center;border-bottom:1px solid #d0bfaf;}
+.notice { padding: 10px 16px; font-size: 0.78rem; font-weight: 600; color: #5c1010; background: #e8ddd3; text-align: center; border-bottom: 1px solid #d0bfaf; }
 
 /* ── Filters ── */
-.filters{background:#d8c8ba;border-bottom:2px solid #b8a492;padding:16px 16px 14px;}
-.filter-row{display:flex;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto;}
-.fg{flex:1;min-width:140px;}
-.fg label{display:block;font-size:.68rem;font-weight:700;color:#5c1010;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Source Sans 3',sans-serif;}
-.fg select{width:100%;padding:9px 12px;border:2px solid #b8a492;border-radius:6px;font-size:.88rem;font-weight:600;color:#5c1010;background:#fff;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:border-color .2s;}
-.fg select:focus{outline:none;border-color:#7d1a1a;box-shadow:0 0 0 3px rgba(125,26,26,.15);}
+.filters { background: #d8c8ba; border-bottom: 2px solid #b8a492; padding: 14px 16px; }
+.filter-row { display: flex; gap: 12px; flex-wrap: wrap; max-width: 660px; margin: 0 auto; }
+.fg { flex: 1; min-width: 140px; }
+.fg label { display: block; font-size: 0.7rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+.fg select { width: 100%; padding: 9px 12px; border: 2px solid #b8a492; border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
+.fg select:focus { outline: 2px solid #7d1a1a; }
 
-/* ── Main (games area) ── */
-.main{width:100%;background:#ffffff;}
-.main #out{max-width:700px;margin:0 auto;padding:18px 14px 10px;}
+/* ── Main ── */
+.main { width: 100%; background: #fff; }
+.main #out { max-width: 660px; margin: 0 auto; padding: 18px 14px 10px; }
 
-/* ── Empty state ── */
-.empty{background:#fff;border-radius:10px;text-align:center;padding:44px 20px;box-shadow:0 2px 10px rgba(80,20,20,.08);}
-.empty .icon{font-size:2.4rem;margin-bottom:10px;}
-.empty h3{font-family:'Playfair Display',Georgia,serif;color:#7d1a1a;font-size:1rem;margin-bottom:6px;}
-.empty p{font-size:.85rem;color:#555;line-height:1.6;}
+/* ── Empty ── */
+.empty { background: #fff; border-radius: 10px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.1); }
+.empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
+.empty h3 { font-family: Georgia, serif; color: #7d1a1a; font-size: 1rem; margin-bottom: 6px; }
+.empty p { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
 /* ── Stats bar ── */
-.statsbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
-.badge{display:inline-flex;align-items:center;gap:6px;background:#7d1a1a;color:#fff;padding:5px 13px 5px 9px;border-radius:20px;font-size:.82rem;font-weight:700;}
-.badge .dot{width:7px;height:7px;border-radius:50%;background:#e07878;}
-.cnt{font-size:.76rem;color:#5c1010;font-weight:600;}
-.cnt a{color:#2d3a8c;text-decoration:underline;}
-.cnt a:hover{color:#7d1a1a;}
+.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: #7d1a1a; color: #fff; padding: 5px 13px 5px 9px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #e07878; }
+.cnt { font-size: 0.76rem; color: #5c1010; font-weight: 600; }
+.cnt a { color: #2d3a8c; text-decoration: underline; }
+.cnt a:hover { color: #7d1a1a; }
 
 /* ── Day group ── */
-.dg{margin-bottom:20px;}
-.dg:last-child{margin-bottom:0;}
-.dh{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.dlabel{font-family:'Playfair Display',Georgia,serif;font-size:.8rem;font-weight:700;color:#5c1010;white-space:nowrap;}
-.dcount{font-size:.7rem;font-weight:700;color:#fff;background:#7d1a1a;padding:2px 9px;border-radius:10px;white-space:nowrap;}
-.dline{flex:1;height:1px;background:#b8a492;}
+.dg { margin-bottom: 20px; }
+.dg:last-child { margin-bottom: 0; }
+.dh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.dlabel { font-family: Georgia, serif; font-size: 0.8rem; font-weight: 700; color: #5c1010; white-space: nowrap; }
+.dcount { font-size: 0.7rem; font-weight: 700; color: #fff; background: #7d1a1a; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
+.dline { flex: 1; height: 1px; background: #b8a492; }
 
 /* ── Game card ── */
-.card{background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(80,20,20,.08);padding:6px 12px;margin-bottom:5px;border-left:4px solid #7d1a1a;display:flex;align-items:center;gap:10px;}
-.card:hover{background:#faf6f2;}
-.tcol{text-align:center;min-width:110px;flex-shrink:0;}
-.thour{font-family:'Playfair Display',Georgia,serif;font-size:.72rem;font-weight:700;color:#7d1a1a;line-height:1.3;}
-.divdr{width:1px;height:28px;background:#d8c8ba;flex-shrink:0;}
-.mcol{flex:1;min-width:0;}
-.teams{font-weight:700;font-size:.82rem;color:#222;}
-.teams .sep{color:#7d1a1a;margin:0 4px;}
-.div-tag{display:inline-block;font-size:.58rem;font-weight:700;padding:1px 6px;border-radius:4px;background:#f0e6dd;color:#7d1a1a;letter-spacing:.04em;text-transform:uppercase;margin-left:6px;}
+.card { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(80,20,20,.08); padding: 6px 12px; margin-bottom: 5px; border-left: 4px solid #7d1a1a; display: flex; align-items: center; gap: 10px; }
+.card:hover { background: #faf6f2; }
+.tcol { text-align: center; min-width: 110px; flex-shrink: 0; }
+.thour { font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; }
+.divdr { width: 1px; height: 28px; background: #d8c8ba; flex-shrink: 0; }
+.mcol { flex: 1; min-width: 0; }
+.teams { font-weight: 700; font-size: 0.82rem; color: #222; }
+.teams .sep { color: #7d1a1a; margin: 0 4px; }
+.div-tag { display: inline-block; font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #f0e6dd; color: #7d1a1a; letter-spacing: .04em; text-transform: uppercase; margin-left: 6px; }
 
-@media(max-width:520px){
-  .dark-banner{padding:22px 16px;}
-  .dark-banner h1{font-size:1.4rem;}
-  .dark-banner h2{font-size:1.2rem;}
-  .content-block{padding:22px 16px;}
-  .verse-block{padding:18px 14px;}
-  .verse-card{padding:18px 16px;}
-  .verse-text{font-size:1rem;}
-  .welcome-title{font-size:1.2rem;}
-  .filter-row{flex-direction:column;}
-  .fg{min-width:100%;}
-  .notice{font-size:.72rem;padding:9px 14px;}
-  .statsbar{flex-direction:column;align-items:flex-start;gap:6px;}
-  .cnt{font-size:.7rem;}
-  .card{flex-direction:column;align-items:flex-start;gap:4px;padding:10px 12px;}
-  .tcol{text-align:left;min-width:unset;}
-  .thour{font-size:.7rem;}
-  .divdr{display:none;}
-  .mcol{width:100%;}
-  .teams{font-size:.82rem;line-height:1.4;}
-  .div-tag{font-size:.56rem;}
-  .dlabel{font-size:.75rem;}
-  .dcount{font-size:.65rem;}
+@media(max-width:480px) {
+  .filter-row { flex-direction: column; }
+  .fg { min-width: 100%; }
+  .card { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 12px; }
+  .tcol { text-align: left; min-width: unset; }
+  .divdr { display: none; }
+  .mcol { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ 1. HERO BANNER ═══════════ -->
-<div class="dark-banner">
-  <h1>Welcome to the 2026 NA<br>Coptic League Season</h1>
+<div class="header"><h1>Welcome to the 2026 NA Coptic League Season</h1></div>
+
+<div class="section">
+  <div class="section-title">📖 Verse of the Day</div>
+  <div class="verse-text" id="verseText"></div>
+  <div class="verse-ref" id="verseRef"></div>
 </div>
 
-<!-- ═══════════ 2. VERSE OF THE DAY ═══════════ -->
-<div class="verse-block">
-  <div class="verse-card">
-    <div class="verse-label"><span class="icon">📖</span> Verse of the Day</div>
-    <div class="verse-text" id="verseText"></div>
-    <div class="verse-ref" id="verseRef"></div>
-  </div>
+<div class="section welcome">
+  <div class="section-title">🏀 Welcome to the 2026 NA Coptic League Season! 🏀</div>
+  <p>It's that time of year again, another amazing season of fun, fellowship, and basketball!</p>
+  <p>All coaches &amp; players must <a href="https://nacopticleague.chmeetings.com" target="_blank">register</a> on the league app for the 2026 season by April 29, 2026.</p>
+  <p><strong>Only after your registration is approved</strong>, the <a href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/forms/E42D12FE3D452A83" target="_blank">Season Participant Waiver &amp; Release of Liability Form</a> will be made accessible to be completed by April 30, 2026.</p>
+  <p>We pray that our Lord Jesus Christ continues to bless:</p>
+  <ul>
+    <li>Our beloved bishops, Bishop David, Bishop Karas, and Bishop Gabriel</li>
+    <li>Our priests, administrators, players, coaches, assistant coaches, referees, church coordinators, fans, and all devoted servants</li>
+  </ul>
+  <p><em>Have any questions?</em></p>
+  <p>Reach out to your <strong>church coordinator</strong> or submit a <a href="https://nacopticleague.chmeetings.com" target="_blank">Contact Us Form</a>.</p>
 </div>
 
-<!-- ═══════════ 3. WELCOME ═══════════ -->
-<div class="content-block">
-  <div class="inner">
-    <div class="welcome-title"><span class="emoji">🏀</span> Welcome to the 2026 NA Coptic League Season! <span class="emoji">🏀</span></div>
-    <hr class="welcome-hr">
-    <p>It's that time of year again, another amazing season of fun, fellowship, and basketball!</p>
-    <p>All coaches &amp; players must <a href="https://nacopticleague.chmeetings.com" target="_blank">register</a> on the league app for the 2026 season by April 29, 2026.</p>
-    <p><strong>Only after your registration is approved</strong>, the <a href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/forms/E42D12FE3D452A83" target="_blank">Season Participant Waiver &amp; Release of Liability Form</a> will be made accessible to be completed by April 30, 2026.</p>
-    <p>We pray that our Lord Jesus Christ continues to bless:</p>
-    <ul>
-      <li>Our beloved bishops, Bishop David, Bishop Karas, and Bishop Gabriel</li>
-      <li>Our priests, administrators, players, coaches, assistant coaches, referees, church coordinators, fans, and all devoted servants</li>
-    </ul>
-    <p><em>Have any questions?</em></p>
-    <p>Reach out to your <strong>church coordinator</strong> or submit a <a href="https://nacopticleague.chmeetings.com" target="_blank">Contact Us Form</a>.</p>
-  </div>
+<div class="section">
+  <a class="waiver-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/forms/E42D12FE3D452A83" target="_blank">Click Here to Complete the Participant Waiver &amp; Release of Liability</a>
+  <div class="waiver-deadline">Deadline: April 30, 2026</div>
 </div>
 
-<!-- ═══════════ 4. WAIVER BANNER ═══════════ -->
-<a class="waiver-banner" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/forms/E42D12FE3D452A83" target="_blank">
-  <h2>Click Here to Complete the Participant Waiver &amp; Release of Liability</h2>
-  <div class="deadline">Deadline: April 30, 2026</div>
-</a>
-
-<!-- ═══════════ 5. RULES ═══════════ -->
-<div class="content-block">
-  <div class="inner">
-    <div class="rules-title">NA COPTIC LEAGUE</div>
-    <div class="rules-sub">Official Rules &amp; Regulations</div>
-    <div class="rules-sub">2026 Season [May 2026 – July 2026]</div>
-    <hr class="rules-hr">
-    <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank">CLICK HERE TO READ Official Rules and Regulations</a>
-  </div>
+<div class="section">
+  <div class="section-title">NA Coptic League</div>
+  <div class="rules-sub">Official Rules &amp; Regulations &middot; 2026 Season [May 2026 – July 2026]</div>
+  <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank" style="margin-top:12px;">CLICK HERE TO READ Official Rules and Regulations</a>
 </div>
 
-<!-- ═══════════ 6. SCHEDULE HEADER ═══════════ -->
-<div class="dark-banner">
-  <h2>2026 Season — Full Schedule</h2>
-  <div class="sub">NA Coptic League &middot; May – July 2026</div>
-</div>
+<div class="header"><h1>2026 Season — Full Schedule</h1></div>
 
-<!-- ═══════════ 7. NOTICE + FILTERS + GAMES ═══════════ -->
 <div class="notice">Games are still being added — the full and completed schedule will be displayed no later than May 2, 2026.</div>
 
 <div class="filters">
@@ -218,12 +166,9 @@ body{font-family:'Source Sans 3',sans-serif;background:#f7f2ed;margin:0;padding:
   </div>
 </div>
 
-<div class="main"><div id="out">
-  <div class="empty"><div class="icon">🏀</div><h3>Loading Schedule&hellip;</h3><p>All games will appear here.</p></div>
-</div></div>
+<div class="main"><div id="out"></div></div>
 
 <script>
-/* ═══════════ VERSE OF THE DAY ═══════════ */
 var VERSES = [
   {text:"For I know that my Redeemer lives, And He shall stand at last on the earth;",ref:"Job 19:25"},
   {text:"The Lord is my shepherd; I shall not want.",ref:"Psalm 23:1"},
@@ -267,7 +212,6 @@ var VERSES = [
   document.getElementById('verseRef').textContent = v.ref;
 })();
 
-/* ═══════════ SCHEDULE ═══════════ */
 var VENUES = {
   HC: { name: "Holy Child Catholic Church", url: "https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312" },
   BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" },
@@ -298,46 +242,31 @@ var GAMES = [
 ];
 
 function addHour(time) {
-  var parts = time.split(' ');
-  var hm = parts[0].split(':');
-  var h = parseInt(hm[0]);
-  var m = hm[1];
-  var ampm = parts[1];
-  var endH = h + 1;
-  var endAmpm = ampm;
-  if (h === 11 && ampm === 'AM') { endAmpm = 'PM'; }
-  if (h === 11 && ampm === 'PM') { endAmpm = 'AM'; }
-  if (endH > 12) { endH = endH - 12; }
+  var parts = time.split(' '), hm = parts[0].split(':'), h = parseInt(hm[0]), m = hm[1], ampm = parts[1];
+  var endH = h + 1, endAmpm = ampm;
+  if (h === 11 && ampm === 'AM') endAmpm = 'PM';
+  if (h === 11 && ampm === 'PM') endAmpm = 'AM';
+  if (endH > 12) endH -= 12;
   return parts[0] + ' ' + ampm + ' – ' + endH + ':' + m + ' ' + endAmpm;
 }
 
 function timeSort(a, b) {
-  function to24(t) { var p = t.split(' '), hm = p[0].split(':'), h = +hm[0], m = +hm[1]; if (p[1]==='PM' && h!==12) h+=12; if (p[1]==='AM' && h===12) h=0; return h*60+m; }
+  function to24(t) { var p = t.split(' '), hm = p[0].split(':'), h = +hm[0], m = +hm[1]; if (p[1]==='PM'&&h!==12) h+=12; if (p[1]==='AM'&&h===12) h=0; return h*60+m; }
   return to24(a.time) - to24(b.time);
 }
 
-function fmtDateLabel(dateStr) {
-  return new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
-}
-
-function fmtDateLong(dateStr) {
-  return new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
-}
+function fmtDateLabel(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}); }
+function fmtDateLong(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }
 
 function buildDateFilter() {
-  var sel = document.getElementById('fdate');
-  var dateSet = {};
+  var sel = document.getElementById('fdate'), dateSet = {};
   GAMES.forEach(function(g) { dateSet[g.date] = true; });
-  var allDates = Object.keys(dateSet).sort();
-  var today = new Date(); today.setHours(0,0,0,0);
+  var allDates = Object.keys(dateSet).sort(), today = new Date(); today.setHours(0,0,0,0);
   sel.innerHTML = '<option value="ALL">All Dates</option>';
   var closestIdx = 0, closestDiff = Infinity;
   allDates.forEach(function(d, idx) {
-    var o = document.createElement('option');
-    o.value = d; o.text = fmtDateLabel(d);
-    sel.appendChild(o);
-    var dt = new Date(d + 'T12:00:00');
-    var diff = dt - today;
+    var o = document.createElement('option'); o.value = d; o.text = fmtDateLabel(d); sel.appendChild(o);
+    var diff = new Date(d+'T12:00:00') - today;
     if (diff >= 0 && diff < closestDiff) { closestDiff = diff; closestIdx = idx + 1; }
   });
   if (closestDiff === Infinity && allDates.length) closestIdx = allDates.length;
@@ -345,45 +274,30 @@ function buildDateFilter() {
 }
 
 function render() {
-  var dateF = document.getElementById('fdate').value;
-  var divF = document.getElementById('fdiv').value;
-  var venF = document.getElementById('fvenue').value;
-  var out = document.getElementById('out');
-
+  var dateF = document.getElementById('fdate').value, divF = document.getElementById('fdiv').value, venF = document.getElementById('fvenue').value, out = document.getElementById('out');
   var filtered = GAMES.filter(function(g) {
     if (dateF !== 'ALL' && g.date !== dateF) return false;
     if (divF && g.div !== divF) return false;
     if (venF && g.v !== venF) return false;
     return true;
   });
-
   if (!filtered.length) {
-    var emptyVenue = VENUES[venF] ? VENUES[venF].name : '';
-    var emptyDate = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
-    var emptyMsg = emptyVenue ? 'No games currently scheduled' + emptyDate + ' at ' + emptyVenue + '.' : 'No games found — try a different filter!';
-    var emptyTip = 'Try selecting a different date or venue, or check back later as games are still being added.';
-    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + emptyMsg + '</h3><p>' + emptyTip + '</p></div>';
+    var ev = VENUES[venF] ? VENUES[venF].name : '', ed = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
+    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + (ev ? 'No games currently scheduled' + ed + ' at ' + ev + '.' : 'No games found — try a different filter!') + '</h3><p>Try selecting a different date or venue, or check back later as games are still being added.</p></div>';
     return;
   }
-
   var byDate = {};
   filtered.forEach(function(g) { if (!byDate[g.date]) byDate[g.date] = []; byDate[g.date].push(g); });
-  var dates = Object.keys(byDate).sort();
-  var totalGames = filtered.length;
-  var vn = VENUES[venF];
+  var dates = Object.keys(byDate).sort(), total = filtered.length, vn = VENUES[venF];
   var divLabel = divF ? (DIV_LABELS[divF] || divF) : 'All Divisions';
   var venueLink = vn ? '<a href="' + vn.url + '" target="_blank">' + vn.name + ' — click here for directions</a>' : '';
-
-  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + totalGames + ' game' + (totalGames !== 1 ? 's' : '') + ' &middot; ' + venueLink + '</div></div>';
-
+  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + total + ' game' + (total !== 1 ? 's' : '') + ' &middot; ' + venueLink + '</div></div>';
   dates.forEach(function(date) {
-    var games = byDate[date].sort(timeSort);
-    var dl = fmtDateLong(date);
+    var games = byDate[date].sort(timeSort), dl = fmtDateLong(date);
     h += '<div class="dg"><div class="dh"><span class="dlabel">' + dl + '</span><span class="dcount">' + games.length + ' game' + (games.length !== 1 ? 's' : '') + '</span><div class="dline"></div></div>';
     games.forEach(function(g) {
-      var timeRange = addHour(g.time);
-      var dtag = '<span class="div-tag">' + DIV_LABELS[g.div] + '</span>';
-      h += '<div class="card"><div class="tcol"><div class="thour">' + timeRange + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + g.t1 + '<span class="sep">vs.</span>' + g.t2 + dtag + '</div></div></div>';
+      var tr = addHour(g.time), dtag = '<span class="div-tag">' + DIV_LABELS[g.div] + '</span>';
+      h += '<div class="card"><div class="tcol"><div class="thour">' + tr + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + g.t1 + '<span class="sep">vs.</span>' + g.t2 + dtag + '</div></div></div>';
     });
     h += '</div>';
   });
@@ -393,10 +307,7 @@ function render() {
 buildDateFilter();
 render();
 
-function broadcastHeight() {
-  var h = document.body.scrollHeight;
-  window.parent.postMessage({ type: 'resize', height: h }, '*');
-}
+function broadcastHeight() { window.parent.postMessage({ type: 'resize', height: document.body.scrollHeight }, '*'); }
 window.addEventListener('load', broadcastHeight);
 new MutationObserver(broadcastHeight).observe(document.body, { childList: true, subtree: true });
 setInterval(broadcastHeight, 500);

@@ -86,6 +86,7 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
 .teams { font-weight: 700; font-size: 0.82rem; color: #222; }
 .teams .sep { color: #7d1a1a; margin: 0 4px; }
 .div-tag { display: inline-block; font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #f0e6dd; color: #7d1a1a; letter-spacing: .04em; text-transform: uppercase; margin-left: 6px; }
+.final { font-size: 0.65rem; color: #888; margin-top: 2px; }
 
 @media(max-width:480px) {
   .filter-row { flex-direction: column; }
@@ -217,19 +218,21 @@ var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Gir
 var GAMES = [
   /* ── May 2 — BK (St. George Community Center) ── */
   {t1:"Queens",t2:"Astoria",div:"HS-NY",date:"2026-05-02",time:"3:00 PM",v:"BK"},
-  {t1:"SI2",t2:"Astoria",div:"JHS",date:"2026-05-02",time:"4:00 PM",v:"BK"},
-  {t1:"Queens",t2:"SI2",div:"College",date:"2026-05-02",time:"5:00 PM",v:"BK"},
+  {t1:"SI2",t2:"Astoria",div:"JHS",date:"2026-05-02",time:"4:00 PM",v:"BK",s1:38,s2:19},
+  {t1:"Queens",t2:"SI2",div:"College",date:"2026-05-02",time:"5:00 PM",v:"BK",s1:40,s2:50},
   {t1:"Brooklyn",t2:"Bayonne 2 (VMSJ)",div:"College",date:"2026-05-02",time:"6:00 PM",v:"BK"},
   {t1:"Brooklyn (1)",t2:"Brooklyn (2)",div:"HS-NY",date:"2026-05-02",time:"7:00 PM",v:"BK"},
 
   /* ── May 3 — HC (Holy Child Catholic Church) ── */
-  {t1:"West Side",t2:"Bayonne 1 (SASA)",div:"JHS",date:"2026-05-03",time:"3:00 PM",v:"HC"},
+  {t1:"West Side",t2:"Bayonne 1 (SASA)",div:"JHS",date:"2026-05-03",time:"3:00 PM",v:"HC",s1:31,s2:26},
   {t1:"Piscataway",t2:"Bayonne 1 (SASA)",div:"College",date:"2026-05-03",time:"4:00 PM",v:"HC"},
   {t1:"Belleville",t2:"Holmdel",div:"Girls",date:"2026-05-03",time:"5:00 PM",v:"HC"},
   {t1:"Upstate",t2:"Piscataway",div:"HS-NJ",date:"2026-05-03",time:"6:00 PM",v:"HC"},
   {t1:"West Side",t2:"Holmdel",div:"HS-NJ",date:"2026-05-03",time:"7:00 PM",v:"HC"},
   {t1:"SI1 (1)",t2:"SI2 (1)",div:"HS-NY",date:"2026-05-03",time:"8:00 PM",v:"HC"}
 ];
+
+function stripParens(name) { return name.replace(/[()]/g, ''); }
 
 function addHour(time) {
   var parts = time.split(' '), hm = parts[0].split(':'), h = parseInt(hm[0]), m = hm[1], ampm = parts[1];
@@ -287,7 +290,15 @@ function render() {
     h += '<div class="dg"><div class="dh"><span class="dlabel">' + dl + '</span><span class="dcount">' + games.length + ' game' + (games.length !== 1 ? 's' : '') + '</span><div class="dline"></div></div>';
     games.forEach(function(g) {
       var tr = addHour(g.time), dtag = '<span class="div-tag">' + DIV_LABELS[g.div] + '</span>';
-      h += '<div class="card"><div class="tcol"><div class="thour">' + tr + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + g.t1 + '<span class="sep">vs.</span>' + g.t2 + dtag + '</div></div></div>';
+      var t1name = stripParens(g.t1), t2name = stripParens(g.t2);
+      var finalHtml = '';
+      var t1display = t1name, t2display = t2name;
+      if (g.s1 != null && g.s2 != null) {
+        t1display = t1name + ' [' + g.s1 + ']';
+        t2display = t2name + ' [' + g.s2 + ']';
+        finalHtml = '<div class="final">Final Score</div>';
+      }
+      h += '<div class="card"><div class="tcol"><div class="thour">' + tr + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + t1display + '<span class="sep">vs.</span>' + t2display + dtag + '</div>' + finalHtml + '</div></div>';
     });
     h += '</div>';
   });

@@ -155,6 +155,8 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
         <option value="BK">St. George Community Center</option>
         <option value="EB">St. Mark Coptic Christian Academy</option>
         <option value="LI">St. Mark Coptic Center LI</option>
+        <option value="CYO">CYO MIV</option>
+        <option value="SJN">St. John Neumann</option>
       </select>
     </div>
   </div>
@@ -210,7 +212,9 @@ var VENUES = {
   HC: { name: "Holy Child Catholic Church", url: "https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312" },
   BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" },
   EB: { name: "St. Mark Coptic Christian Academy", url: "https://maps.google.com/?q=80+David+St,+South+River,+NJ+08882" },
-  LI: { name: "St. Mark Coptic Center LI", url: "https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797" }
+  LI: { name: "St. Mark Coptic Center LI", url: "https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797" },
+  CYO: { name: "CYO MIV", url: "https://maps.google.com/?q=CYO+MIV" },
+  SJN: { name: "St. John Neumann", url: "https://maps.google.com/?q=St+John+Neumann" }
 };
 
 var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
@@ -229,7 +233,34 @@ var GAMES = [
   {t1:"Belleville",t2:"Holmdel",div:"Girls",date:"2026-05-03",time:"5:00 PM",v:"HC"},
   {t1:"Upstate",t2:"Piscataway",div:"HS-NJ",date:"2026-05-03",time:"6:00 PM",v:"HC"},
   {t1:"West Side",t2:"Holmdel",div:"HS-NJ",date:"2026-05-03",time:"7:00 PM",v:"HC"},
-  {t1:"SI1 (1)",t2:"SI2 (1)",div:"HS-NY",date:"2026-05-03",time:"8:00 PM",v:"HC"}
+  {t1:"SI1 (1)",t2:"SI2 (1)",div:"HS-NY",date:"2026-05-03",time:"8:00 PM",v:"HC"},
+
+  /* ── May 9 — SJN (St. John Neumann) ── */
+  {t1:"Summit",t2:"Makkar",div:"JHS",date:"2026-05-09",time:"9:00 AM",v:"SJN"},
+  {t1:"Makkar",t2:"Piscataway",div:"HS-NJ",date:"2026-05-09",time:"10:00 AM",v:"SJN"},
+  {t1:"Paramus",t2:"Bayonne 1 (SASA) (2)",div:"HS-NJ",date:"2026-05-09",time:"11:00 AM",v:"SJN"},
+  {t1:"Upstate",t2:"Bayonne 1 (SASA) (1)",div:"HS-NJ",date:"2026-05-09",time:"12:00 PM",v:"SJN"},
+  {t1:"SI2",t2:"Summit",div:"Mens",date:"2026-05-09",time:"1:00 PM",v:"SJN"},
+  {t1:"Holmdel",t2:"SI1",div:"Mens",date:"2026-05-09",time:"2:00 PM",v:"SJN"},
+  {t1:"Philadelphia",t2:"SI2",div:"JHS",date:"2026-05-09",time:"3:00 PM",v:"SJN"},
+  {t1:"SI1",t2:"Philadelphia",div:"College",date:"2026-05-09",time:"4:00 PM",v:"SJN"},
+
+  /* ── May 9 — CYO (CYO MIV Court) ── */
+  {t1:"Bayonne 1 (SASA)",t2:"Brooklyn",div:"College",date:"2026-05-09",time:"10:00 AM",v:"CYO"},
+  {t1:"Holmdel",t2:"Upstate",div:"College",date:"2026-05-09",time:"11:00 AM",v:"CYO"},
+  {t1:"Holmdel",t2:"West Side",div:"JHS",date:"2026-05-09",time:"12:00 PM",v:"CYO"},
+  {t1:"Upstate",t2:"SI1",div:"Girls",date:"2026-05-09",time:"1:00 PM",v:"CYO"},
+
+  /* ── May 9 — BK (St. George Community Center) ── */
+  {t1:"SI2",t2:"SI3",div:"Girls",date:"2026-05-09",time:"3:00 PM",v:"BK"},
+  {t1:"Belleville",t2:"Brooklyn",div:"Girls",date:"2026-05-09",time:"4:00 PM",v:"BK"},
+  {t1:"SI2 (2)",t2:"Brooklyn (1)",div:"HS-NY",date:"2026-05-09",time:"5:00 PM",v:"BK"},
+  {t1:"SI1 (2)",t2:"Brooklyn (2)",div:"HS-NY",date:"2026-05-09",time:"6:00 PM",v:"BK"},
+
+  /* ── May 9 — LI (St. Mark Coptic Center LI) ── */
+  {t1:"Queens",t2:"Long Island",div:"College",date:"2026-05-09",time:"12:00 PM",v:"LI"},
+  {t1:"Queens",t2:"Astoria",div:"Girls",date:"2026-05-09",time:"1:00 PM",v:"LI"},
+  {t1:"Queens",t2:"Long Island (1)",div:"HS-NY",date:"2026-05-09",time:"2:00 PM",v:"LI"}
 ];
 
 function stripParens(name) { return name.replace(/[()]/g, ''); }

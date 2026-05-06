@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 NA Coptic League</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-y: auto; }
+body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; }
+
+/* ── Header ── */
+.header { background: #7d1a1a; padding: 22px 20px; text-align: center; }
+.header h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #e07878; font-weight: 700; }
+
+/* ── Sections ── */
+.section { max-width: 660px; margin: 0 auto; padding: 24px 16px; border-bottom: 1px solid #d8c8ba; }
+.section:last-of-type { border-bottom: none; }
+.section-title { font-family: Georgia, serif; font-size: 1.1rem; color: #7d1a1a; font-weight: 700; text-align: center; margin-bottom: 12px; }
+
+/* ── Verse ── */
+.verse-text { font-family: Georgia, serif; font-size: 1rem; color: #222; line-height: 1.6; text-align: center; margin-bottom: 8px; }
+.verse-ref { font-size: 0.82rem; color: #888; text-align: center; }
+
+/* ── Welcome ── */
+.welcome p { font-size: 0.9rem; color: #333; line-height: 1.7; margin-bottom: 12px; text-align: center; }
+.welcome a { color: #2d3a8c; font-weight: 700; text-decoration: underline; }
+.welcome strong { color: #7d1a1a; }
+.welcome ul { margin: 0 0 12px 0; padding: 0; list-style-position: inside; font-size: 0.9rem; color: #333; line-height: 1.8; text-align: center; }
+.welcome em { color: #333; }
+
+/* ── Waiver ── */
+.waiver-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #7d1a1a; font-weight: 700; text-decoration: underline; margin-bottom: 6px; }
+.waiver-link:hover { color: #5c1010; }
+.waiver-deadline { font-size: 0.78rem; color: #888; text-align: center; }
+
+/* ── Rules ── */
+.rules-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #222; font-weight: 700; text-decoration: none; }
+.rules-link:hover { color: #7d1a1a; text-decoration: underline; }
+.rules-sub { font-size: 0.75rem; color: #888; text-align: center; margin-top: 4px; }
+
+/* ── Notice ── */
+.notice { padding: 10px 16px; font-size: 0.78rem; font-weight: 600; color: #5c1010; background: #e8ddd3; text-align: center; border-bottom: 1px solid #d0bfaf; }
+
+/* ── Filters ── */
+.filters { background: #d8c8ba; border-bottom: 2px solid #b8a492; padding: 14px 16px; }
+.filter-row { display: flex; gap: 12px; flex-wrap: wrap; max-width: 660px; margin: 0 auto; }
+.fg { flex: 1; min-width: 140px; }
+.fg label { display: block; font-size: 0.7rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+.fg select { width: 100%; padding: 9px 12px; border: 2px solid #b8a492; border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
+.fg select:focus { outline: 2px solid #7d1a1a; }
+
+/* ── Main ── */
+.main { width: 100%; background: #fff; }
+.main #out { max-width: 660px; margin: 0 auto; padding: 18px 14px 10px; }
+
+/* ── Empty ── */
+.empty { background: #fff; border-radius: 10px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.1); }
+.empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
+.empty h3 { font-family: Georgia, serif; color: #7d1a1a; font-size: 1rem; margin-bottom: 6px; }
+.empty p { font-size: 0.85rem; color: #555; line-height: 1.6; }
+
+/* ── Stats bar ── */
+.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; background: #7d1a1a; color: #fff; padding: 5px 13px 5px 9px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #e07878; }
+.cnt { font-size: 0.76rem; color: #5c1010; font-weight: 600; }
+.cnt a { color: #2d3a8c; text-decoration: underline; }
+.cnt a:hover { color: #7d1a1a; }
+
+/* ── Day group ── */
+.dg { margin-bottom: 20px; }
+.dg:last-child { margin-bottom: 0; }
+.dh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.dlabel { font-family: Georgia, serif; font-size: 0.8rem; font-weight: 700; color: #5c1010; white-space: nowrap; }
+.dcount { font-size: 0.7rem; font-weight: 700; color: #fff; background: #7d1a1a; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
+.dline { flex: 1; height: 1px; background: #b8a492; }
+
+/* ── Game card ── */
+.card { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(80,20,20,.08); padding: 6px 12px; margin-bottom: 5px; border-left: 4px solid #7d1a1a; display: flex; align-items: center; gap: 10px; }
+.card:hover { background: #faf6f2; }
+.tcol { text-align: center; min-width: 110px; flex-shrink: 0; }
+.thour { font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; }
+.divdr { width: 1px; height: 28px; background: #d8c8ba; flex-shrink: 0; }
+.mcol { flex: 1; min-width: 0; }
+.teams { font-weight: 700; font-size: 0.82rem; color: #222; }
+.teams .sep { color: #7d1a1a; margin: 0 4px; }
+.div-tag { display: inline-block; font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #f0e6dd; color: #7d1a1a; letter-spacing: .04em; text-transform: uppercase; margin-left: 6px; }
+.final { font-size: 0.65rem; color: #888; margin-top: 2px; }
+
+/* ── Spinner ── */
+.spinner{display:inline-block;width:24px;height:24px;border:3px solid #e8ddd3;border-top-color:#7d1a1a;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:480px) {
+  .filter-row { flex-direction: column; }
+  .fg { min-width: 100%; }
+  .card { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 12px; }
+  .tcol { text-align: left; min-width: unset; }
+  .divdr { display: none; }
+  .mcol { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>Welcome to the 2026 NA Coptic League Season</h1></div>
+
+<div class="section">
+  <div class="section-title">📖 Verse of the Day</div>
+  <div class="verse-text" id="verseText"></div>
+  <div class="verse-ref" id="verseRef"></div>
+</div>
+
+<div class="section welcome">
+  <div class="section-title">🏀 Welcome to the 2026 NA Coptic League Season! 🏀</div>
+  <p>It's that time of year again, another amazing season of fun, fellowship, and basketball!</p>
+  <p>We pray that our Lord Jesus Christ continues to bless:</p>
+  <ul>
+    <li>Our beloved bishops, Bishop David, Bishop Karas, and Bishop Gabriel</li>
+    <li>Our priests, administrators, players, coaches, assistant coaches, referees, church coordinators, fans, and all devoted servants</li>
+  </ul>
+  <p><em>Have any questions?</em></p>
+  <p>Reach out to your <strong>church coordinator</strong> or submit a <a href="https://nacopticleague.chmeetings.com" target="_blank">Contact Us Form</a>.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">NA Coptic League</div>
+  <div class="rules-sub">Official Rules &amp; Regulations &middot; 2026 Season [May 2026 – July 2026]</div>
+  <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank" style="margin-top:12px;">CLICK HERE TO READ Official Rules and Regulations</a>
+</div>
+
+<div class="header"><h1>2026 Season — Full Schedule</h1></div>
+
+<div class="notice">More games will be added — check back for schedule updates.</div>
+
+<div class="filters">
+  <div class="filter-row">
+    <div class="fg">
+      <label>Date</label>
+      <select id="fdate" onchange="render()"></select>
+    </div>
+    <div class="fg">
+      <label>Division</label>
+      <select id="fdiv" onchange="render()">
+        <option value="">All Divisions</option>
+        <option value="JHS">Junior High School (JHS)</option>
+        <option value="Girls">Girls</option>
+        <option value="HS-NY">High School — NY</option>
+        <option value="HS-NJ">High School — NJ</option>
+        <option value="College">College</option>
+        <option value="Mens">Mens</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>Venue</label>
+      <select id="fvenue" onchange="render()">
+        <option value="HC">Holy Child Catholic Church</option>
+        <option value="BK">St. George Community Center</option>
+        <option value="EB">St. Mark Coptic Christian Academy</option>
+        <option value="LI">St. Mark Coptic Center LI</option>
+        <option value="CYO">CYO MIV</option>
+        <option value="SJN">St. John Neumann</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="main"><div id="out">
+  <div class="empty"><div class="spinner"></div><h3>Loading schedule…</h3><p>One moment.</p></div>
+</div></div>
+
+<script>
+var VERSES = [
+  {text:"For I know that my Redeemer lives, And He shall stand at last on the earth;",ref:"Job 19:25"},
+  {text:"The Lord is my shepherd; I shall not want.",ref:"Psalm 23:1"},
+  {text:"I can do all things through Christ who strengthens me.",ref:"Philippians 4:13"},
+  {text:"Trust in the Lord with all your heart, And lean not on your own understanding;",ref:"Proverbs 3:5"},
+  {text:"Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go.",ref:"Joshua 1:9"},
+  {text:"For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.",ref:"John 3:16"},
+  {text:"The Lord is my light and my salvation; Whom shall I fear?",ref:"Psalm 27:1"},
+  {text:"But those who wait on the Lord shall renew their strength; They shall mount up with wings like eagles.",ref:"Isaiah 40:31"},
+  {text:"And we know that all things work together for good to those who love God.",ref:"Romans 8:28"},
+  {text:"Come to Me, all you who labor and are heavy laden, and I will give you rest.",ref:"Matthew 11:28"},
+  {text:"The Lord bless you and keep you; The Lord make His face shine upon you, And be gracious to you.",ref:"Numbers 6:24-25"},
+  {text:"He has shown you, O man, what is good; And what does the Lord require of you but to do justly, to love mercy, and to walk humbly with your God?",ref:"Micah 6:8"},
+  {text:"Do not fear, for I am with you; Do not be dismayed, for I am your God.",ref:"Isaiah 41:10"},
+  {text:"Blessed are the peacemakers, For they shall be called sons of God.",ref:"Matthew 5:9"},
+  {text:"Let all that you do be done with love.",ref:"1 Corinthians 16:14"},
+  {text:"Delight yourself also in the Lord, And He shall give you the desires of your heart.",ref:"Psalm 37:4"},
+  {text:"The name of the Lord is a strong tower; The righteous run to it and are safe.",ref:"Proverbs 18:10"},
+  {text:"For where two or three are gathered together in My name, I am there in the midst of them.",ref:"Matthew 18:20"},
+  {text:"This is the day the Lord has made; We will rejoice and be glad in it.",ref:"Psalm 118:24"},
+  {text:"In everything give thanks; for this is the will of God in Christ Jesus for you.",ref:"1 Thessalonians 5:18"},
+  {text:"Have I not commanded you? Be strong and of good courage; do not be afraid.",ref:"Joshua 1:9"},
+  {text:"The Lord is near to all who call upon Him, To all who call upon Him in truth.",ref:"Psalm 145:18"},
+  {text:"But the fruit of the Spirit is love, joy, peace, longsuffering, kindness, goodness, faithfulness, gentleness, self-control.",ref:"Galatians 5:22-23"},
+  {text:"Cast your burden on the Lord, And He shall sustain you.",ref:"Psalm 55:22"},
+  {text:"Jesus said to him, 'I am the way, the truth, and the life.'",ref:"John 14:6"},
+  {text:"The Lord is good, A stronghold in the day of trouble; And He knows those who trust in Him.",ref:"Nahum 1:7"},
+  {text:"Grace to you and peace from God our Father and the Lord Jesus Christ.",ref:"Philippians 1:2"},
+  {text:"My grace is sufficient for you, for My strength is made perfect in weakness.",ref:"2 Corinthians 12:9"},
+  {text:"Rejoice always, pray without ceasing.",ref:"1 Thessalonians 5:16-17"},
+  {text:"The Lord your God in your midst, The Mighty One, will save; He will rejoice over you with gladness.",ref:"Zephaniah 3:17"},
+  {text:"Every good gift and every perfect gift is from above, and comes down from the Father of lights.",ref:"James 1:17"}
+];
+
+(function(){
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var dayOfYear = Math.floor((now - start) / 86400000);
+  var v = VERSES[dayOfYear % VERSES.length];
+  document.getElementById('verseText').textContent = v.text;
+  document.getElementById('verseRef').textContent = v.ref;
+})();
+
+var VENUES = {
+  HC: { name: "Holy Child Catholic Church", url: "https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312" },
+  BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" },
+  EB: { name: "St. Mark Coptic Christian Academy", url: "https://maps.google.com/?q=80+David+St,+South+River,+NJ+08882" },
+  LI: { name: "St. Mark Coptic Center LI", url: "https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797" },
+  CYO: { name: "CYO MIV", url: "https://maps.google.com/?q=CYO+MIV" },
+  SJN: { name: "St. John Neumann", url: "https://maps.google.com/?q=St+John+Neumann" }
+};
+
+var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
+
+// Games are loaded dynamically from data/games.json (synced from your Google Sheet).
+var GAMES = [];
+
+function loadGames() {
+  // Cache-buster so we always see fresh data after the sheet pushes a commit
+  var url = 'data/games.json?_=' + Date.now();
+  fetch(url)
+    .then(function(res){ if(!res.ok) throw new Error('HTTP '+res.status); return res.json(); })
+    .then(function(data){
+      GAMES = (Array.isArray(data) ? data : []).map(function(g){
+        // Normalize empty score strings to null so the score-display logic works correctly
+        return {
+          t1: g.t1 || '',
+          t2: g.t2 || '',
+          div: g.div || '',
+          date: g.date || '',
+          time: g.time || '',
+          v: g.v || '',
+          s1: (g.s1 === '' || g.s1 == null) ? null : g.s1,
+          s2: (g.s2 === '' || g.s2 == null) ? null : g.s2
+        };
+      });
+      buildDateFilter();
+      render();
+    })
+    .catch(function(err){
+      document.getElementById('out').innerHTML =
+        '<div class="empty"><div class="icon">⚠️</div><h3>Could not load games</h3>' +
+        '<p>'+err.message+'<br>Try refreshing in a minute.</p></div>';
+    });
+}
+
+function stripParens(name) { return name.replace(/[()]/g, ''); }
+
+function addHour(time) {
+  var parts = time.split(' '), hm = parts[0].split(':'), h = parseInt(hm[0]), m = hm[1], ampm = parts[1];
+  var endH = h + 1, endAmpm = ampm;
+  if (h === 11 && ampm === 'AM') endAmpm = 'PM';
+  if (h === 11 && ampm === 'PM') endAmpm = 'AM';
+  if (endH > 12) endH -= 12;
+  return parts[0] + ' ' + ampm + ' – ' + endH + ':' + m + ' ' + endAmpm;
+}
+
+function timeSort(a, b) {
+  function to24(t) { var p = t.split(' '), hm = p[0].split(':'), h = +hm[0], m = +hm[1]; if (p[1]==='PM'&&h!==12) h+=12; if (p[1]==='AM'&&h===12) h=0; return h*60+m; }
+  return to24(a.time) - to24(b.time);
+}
+
+function fmtDateLabel(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}); }
+function fmtDateLong(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }
+
+function buildDateFilter() {
+  var sel = document.getElementById('fdate'), dateSet = {};
+  GAMES.forEach(function(g) { dateSet[g.date] = true; });
+  var allDates = Object.keys(dateSet).sort(), today = new Date(); today.setHours(0,0,0,0);
+  sel.innerHTML = '<option value="ALL">All Dates</option>';
+  var closestIdx = 0, closestDiff = Infinity;
+  allDates.forEach(function(d, idx) {
+    var o = document.createElement('option'); o.value = d; o.text = fmtDateLabel(d); sel.appendChild(o);
+    var diff = new Date(d+'T12:00:00') - today;
+    if (diff >= 0 && diff < closestDiff) { closestDiff = diff; closestIdx = idx + 1; }
+  });
+  if (closestDiff === Infinity && allDates.length) closestIdx = allDates.length;
+  sel.selectedIndex = closestIdx;
+}
+
+function render() {
+  var dateF = document.getElementById('fdate').value, divF = document.getElementById('fdiv').value, venF = document.getElementById('fvenue').value, out = document.getElementById('out');
+  var filtered = GAMES.filter(function(g) {
+    if (dateF !== 'ALL' && g.date !== dateF) return false;
+    if (divF && g.div !== divF) return false;
+    if (venF && g.v !== venF) return false;
+    return true;
+  });
+  if (!filtered.length) {
+    var ev = VENUES[venF] ? VENUES[venF].name : '', ed = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
+    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + (ev ? 'No games currently scheduled' + ed + ' at ' + ev + '.' : 'No games found — try a different filter!') + '</h3><p>Try selecting a different date or venue, or check back later as games are still being added.</p></div>';
+    return;
+  }
+  var byDate = {};
+  filtered.forEach(function(g) { if (!byDate[g.date]) byDate[g.date] = []; byDate[g.date].push(g); });
+  var dates = Object.keys(byDate).sort(), total = filtered.length, vn = VENUES[venF];
+  var divLabel = divF ? (DIV_LABELS[divF] || divF) : 'All Divisions';
+  var venueLink = vn ? '<a href="' + vn.url + '" target="_blank">' + vn.name + ' — click here for directions</a>' : '';
+  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + total + ' game' + (total !== 1 ? 's' : '') + ' &middot; ' + venueLink + '</div></div>';
+  dates.forEach(function(date) {
+    var games = byDate[date].sort(timeSort), dl = fmtDateLong(date);
+    h += '<div class="dg"><div class="dh"><span class="dlabel">' + dl + '</span><span class="dcount">' + games.length + ' game' + (games.length !== 1 ? 's' : '') + '</span><div class="dline"></div></div>';
+    games.forEach(function(g) {
+      var tr = addHour(g.time), dtag = '<span class="div-tag">' + (DIV_LABELS[g.div] || g.div) + '</span>';
+      var t1name = stripParens(g.t1), t2name = stripParens(g.t2);
+      var finalHtml = '';
+      var t1display = t1name, t2display = t2name;
+      if (g.s1 != null && g.s2 != null) {
+        t1display = t1name + ' [' + g.s1 + ']';
+        t2display = t2name + ' [' + g.s2 + ']';
+        finalHtml = '<div class="final">Final Score</div>';
+      }
+      h += '<div class="card"><div class="tcol"><div class="thour">' + tr + '</div></div><div class="divdr"></div><div class="mcol"><div class="teams">' + t1display + '<span class="sep">vs.</span>' + t2display + dtag + '</div>' + finalHtml + '</div></div>';
+    });
+    h += '</div>';
+  });
+  out.innerHTML = h;
+}
+
+// Kick off the load on page open
+loadGames();
+
+function broadcastHeight() { window.parent.postMessage({ type: 'resize', height: document.body.scrollHeight }, '*'); }
+window.addEventListener('load', broadcastHeight);
+new MutationObserver(broadcastHeight).observe(document.body, { childList: true, subtree: true });
+setInterval(broadcastHeight, 500);
+</script>
+</body>
+</html>

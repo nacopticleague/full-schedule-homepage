@@ -8,6 +8,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { overflow-y: auto; }
 body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; color: #1a1a1a; }
+.page-box { background: #fff; border: 2px solid #7d1a1a; border-radius: 10px; max-width: 720px; margin: 16px auto; padding: 8px 4px; box-shadow: 0 2px 12px rgba(80,20,20,.08); }
 
 /* ── Sections ── */
 .section { max-width: 660px; margin: 0 auto; padding: 22px 18px; }
@@ -82,6 +83,8 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
 </head>
 <body>
 
+<div class="page-box">
+
 <div class="section">
   <div class="section-title">🏀 Regular Season</div>
 </div>
@@ -125,6 +128,8 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
 <div class="main"><div id="out">
   <div class="empty"><div class="spinner"></div><h3>Loading schedule…</h3><p>One moment.</p></div>
 </div></div>
+
+</div><!-- /page-box -->
 
 <script>
 var VENUES = {

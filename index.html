@@ -5,154 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 NA Coptic League</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { overflow-y: auto; }
-body { font-family: 'Cormorant Garamond', Georgia, serif; background: #fdf6e3; margin: 0; padding: 0; color: #2a1414; }
-
-/* ── Header ── */
-.header { background: linear-gradient(180deg, #8b1c1c 0%, #5c1010 100%); padding: 24px 20px 28px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 4px 16px rgba(80,20,20,.35); }
-.header::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, transparent, #d4a73a 30%, #f0d680 50%, #d4a73a 70%, transparent); }
-.header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:5px; background: linear-gradient(90deg, #b8901c 0%, #f0d680 50%, #b8901c 100%); }
-.header .logo-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
-.header .logo { width: 100px; height: 100px; border-radius: 50%; background: #fff; padding: 4px; box-shadow: 0 0 0 3px #d4a73a, 0 0 0 4px #b8901c, 0 6px 18px rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; }
-.header .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-.header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; color: #f0d680; font-weight: 800; letter-spacing: 0.04em; text-shadow: 1px 1px 2px rgba(0,0,0,.4); }
-.header .ornament { color: #d4a73a; font-size: 0.75rem; margin-top: 8px; letter-spacing: 0.5em; opacity: 0.9; }
+body { font-family: 'Arial Nova', Arial, sans-serif; background: #fff; margin: 0; padding: 0; color: #1a1a1a; }
 
 /* ── Sections ── */
-.section { max-width: 660px; margin: 0 auto; padding: 28px 18px; position: relative; }
-.section.alt { background: linear-gradient(180deg, #7d1a1a 0%, #5c1010 100%); color: #f5e5b8; max-width: 100%; padding: 28px 18px; border-top: 3px solid #d4a73a; border-bottom: 3px solid #d4a73a; box-shadow: inset 0 4px 12px rgba(0,0,0,.25); }
-.section.alt .section-title { color: #f0d680; }
-.section.alt .section-title::after { background: linear-gradient(90deg, transparent, #d4a73a, transparent); }
-.section.alt p { color: #f5e5b8; font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto; }
-.section.alt a { color: #f0d680; text-decoration: underline; font-weight: 700; }
-.section.alt a:hover { color: #fff; }
-.section.alt strong { color: #f0d680; }
-.section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; color: #7d1a1a; font-weight: 800; text-align: center; margin-bottom: 14px; letter-spacing: 0.03em; }
-.section-title::after { content: ''; display: block; width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #d4a73a, transparent); margin: 10px auto 0; }
-
-/* ── Verse ── */
-.verse-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; color: #2a1414; line-height: 1.6; text-align: center; margin-bottom: 10px; font-style: italic; padding: 0 8px; }
-.verse-ref { font-size: 0.88rem; color: #7d1a1a; text-align: center; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.06em; font-weight: 600; }
-
-/* ── Welcome (cream sections) ── */
-.welcome p { font-size: 1rem; color: #2a1414; line-height: 1.7; text-align: center; }
-.welcome a { color: #7d1a1a; font-weight: 700; text-decoration: underline; }
-.welcome a:hover { color: #5c1010; }
-
-/* ── Rules ── */
-.rules-link { display: inline-block; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-size: 0.92rem; color: #5c1010; background: linear-gradient(180deg, #f0d680 0%, #d4a73a 100%); padding: 11px 32px; border-radius: 28px; font-weight: 800; text-decoration: none; transition: transform .15s, box-shadow .15s; box-shadow: 0 4px 12px rgba(0,0,0,.3); border: 1.5px solid #b8901c; letter-spacing: 0.08em; text-transform: uppercase; }
-.rules-link:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.35); }
-.rules-link-wrap { text-align: center; margin: 14px 0 6px; }
-.rules-sub { font-size: 0.85rem; text-align: center; margin-top: 10px; font-style: italic; }
-
-/* ── Banner section title (Full Schedule) ── */
-.banner-title { background: linear-gradient(180deg, #7d1a1a, #5c1010); color: #f0d680; max-width: 100%; padding: 22px 18px; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 800; letter-spacing: 0.05em; border-top: 3px solid #d4a73a; border-bottom: 3px solid #d4a73a; box-shadow: inset 0 4px 12px rgba(0,0,0,.25); }
-.banner-title .ornament-side { color: #d4a73a; margin: 0 14px; font-size: 0.95rem; vertical-align: middle; }
+.section { max-width: 660px; margin: 0 auto; padding: 22px 18px; }
+.section-title { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 700; font-size: 1.15rem; color: #7d1a1a; text-align: center; text-decoration: underline; text-underline-offset: 4px; margin-bottom: 14px; }
+.section p { font-size: 0.95rem; color: #1a1a1a; line-height: 1.6; max-width: 600px; margin: 0 auto 12px; }
+.section a { color: #2d3a8c; font-weight: 600; text-decoration: underline; }
+.section a:hover { color: #1a2670; }
+.section strong { color: #1a1a1a; font-weight: 800; }
 
 /* ── Filters ── */
-.filters { background: linear-gradient(180deg, #fcf3da, #e8d8b8); border-bottom: 3px solid #d4a73a; padding: 18px 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
+.filters { background: #fff; padding: 16px; }
 .filter-row { display: flex; gap: 12px; flex-wrap: wrap; max-width: 660px; margin: 0 auto; }
 .fg { flex: 1; min-width: 140px; }
-.fg label { display: block; font-family: 'Playfair Display', serif; font-size: 0.72rem; font-weight: 800; color: #5c1010; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 6px; text-align: center; }
-.fg select { width: 100%; padding: 10px 12px; border: 2px solid #b8901c; border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 600; color: #5c1010; background: #fffdf6; cursor: pointer; }
+.fg label { display: block; font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 6px; text-align: center; font-style: italic; }
+.fg select { width: 100%; padding: 10px 12px; border: 2px solid #b8901c; border-radius: 4px; font-family: 'Arial Nova', Arial, sans-serif; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
 .fg select:focus { outline: 2px solid #d4a73a; border-color: #d4a73a; }
 
 /* ── Main ── */
-.main { width: 100%; background: #fdf6e3; }
-.main #out { max-width: 660px; margin: 0 auto; padding: 24px 14px; }
+.main { width: 100%; background: #fff; }
+.main #out { max-width: 660px; margin: 0 auto; padding: 22px 14px; }
 
 /* ── Empty ── */
-.empty { background: #fff; border-radius: 12px; text-align: center; padding: 50px 22px; box-shadow: 0 3px 14px rgba(80,20,20,.12); border-top: 4px solid #d4a73a; border-bottom: 1px solid #e8d8b8; }
-.empty .icon { font-size: 2.6rem; margin-bottom: 12px; }
-.empty h3 { font-family: 'Playfair Display', Georgia, serif; color: #7d1a1a; font-size: 1.1rem; margin-bottom: 8px; font-weight: 800; }
-.empty p { font-size: 0.95rem; color: #555; line-height: 1.6; }
+.empty { background: #fff; border-radius: 8px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.08); }
+.empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
+.empty h3 { font-family: Georgia, serif; font-style: italic; color: #7d1a1a; font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; }
+.empty p { font-size: 0.92rem; color: #555; line-height: 1.6; }
 
 /* ── Stats bar ── */
-.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid #e8d8b8; }
-.badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(180deg, #8b1c1c, #5c1010); color: #f0d680; padding: 7px 16px 7px 11px; border-radius: 22px; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; box-shadow: 0 3px 8px rgba(125,26,26,.3); border: 1px solid #d4a73a; letter-spacing: 0.03em; }
-.badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #d4a73a; box-shadow: 0 0 5px rgba(212,167,58,.7); }
-.cnt { font-size: 0.88rem; color: #5c1010; font-weight: 600; font-family: 'Cormorant Garamond', serif; }
-.cnt a { color: #7d1a1a; text-decoration: underline; font-weight: 700; }
-.cnt a:hover { color: #5c1010; }
+.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+.badge { display: inline-flex; align-items: center; gap: 7px; background: #7d1a1a; color: #d4a73a; padding: 6px 14px 6px 10px; border-radius: 22px; font-family: Georgia, serif; font-size: 0.85rem; font-weight: 700; box-shadow: 0 2px 6px rgba(125,26,26,.25); border: 1px solid #d4a73a; }
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #d4a73a; }
+.cnt { font-size: 0.85rem; color: #5c1010; font-weight: 600; }
+.cnt a { color: #2d3a8c; text-decoration: underline; }
+.cnt a:hover { color: #1a2670; }
 
 /* ── Day group ── */
-.dg { margin-bottom: 26px; }
-.dg:last-child { margin-bottom: 0; }
-.dh { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 10px 0; border-bottom: 1px solid #e8d8b8; }
-.dlabel { font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; font-weight: 800; color: #5c1010; white-space: nowrap; letter-spacing: 0.02em; }
-.dcount { font-size: 0.7rem; font-weight: 800; color: #5c1010; background: linear-gradient(180deg, #f0d680, #d4a73a); padding: 3px 11px; border-radius: 12px; white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,.15); border: 1px solid #b8901c; }
-.dline { flex: 1; height: 2px; background: linear-gradient(90deg, #d4a73a, transparent); }
+.dg { margin-bottom: 22px; }
+.dh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 6px 0; }
+.dlabel { font-family: Georgia, serif; font-style: italic; font-size: 0.95rem; font-weight: 700; color: #5c1010; white-space: nowrap; }
+.dcount { font-size: 0.7rem; font-weight: 700; color: #5c1010; background: #d4a73a; padding: 2px 9px; border-radius: 10px; white-space: nowrap; border: 1px solid #b8901c; }
+.dline { display: none; }
 
 /* ── Game card ── */
-.card { background: #fff; border-radius: 8px; box-shadow: 0 3px 12px rgba(80,20,20,.1); padding: 12px 14px 12px 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; transition: transform .15s, box-shadow .15s; position: relative; overflow: hidden; }
-.card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #7d1a1a 0%, #d4a73a 50%, #7d1a1a 100%); }
-.card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(80,20,20,.18); }
+.card { background: #fff; border-radius: 6px; box-shadow: 0 2px 8px rgba(80,20,20,.08); padding: 10px 14px 10px 18px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; transition: box-shadow .15s; position: relative; overflow: hidden; }
+.card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #7d1a1a; }
+.card:hover { box-shadow: 0 4px 12px rgba(80,20,20,.12); }
 .tcol { text-align: center; min-width: 110px; flex-shrink: 0; }
-.thour { font-family: 'Playfair Display', Georgia, serif; font-size: 0.78rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; letter-spacing: 0.02em; }
-.divdr { width: 2px; height: 32px; background: linear-gradient(180deg, transparent, #d4a73a, transparent); flex-shrink: 0; }
+.thour { font-family: Georgia, serif; font-size: 0.78rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; }
+.divdr { display: none; }
 .mcol { flex: 1; min-width: 0; }
-.teams { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: #2a1414; line-height: 1.3; }
-.teams .sep { color: #d4a73a; margin: 0 6px; font-weight: 800; font-size: 0.85rem; }
-.div-tag { display: inline-block; font-size: 0.6rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; background: linear-gradient(180deg, #f0d680, #d4a73a); color: #5c1010; letter-spacing: .06em; text-transform: uppercase; margin-left: 8px; border: 1px solid #b8901c; vertical-align: middle; }
-.final { font-size: 0.72rem; color: #888; margin-top: 4px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+.teams { font-weight: 700; font-size: 0.92rem; color: #1a1a1a; line-height: 1.3; }
+.teams .sep { color: #d4a73a; margin: 0 5px; font-weight: 700; font-size: 0.85rem; font-style: italic; }
+.div-tag { display: inline-block; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 3px; background: #d4a73a; color: #5c1010; letter-spacing: .05em; text-transform: uppercase; margin-left: 6px; vertical-align: middle; }
+.final { font-size: 0.7rem; color: #888; margin-top: 3px; font-style: italic; }
 
 /* ── Spinner ── */
-.spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #e8d8b8; border-top-color: #7d1a1a; border-radius: 50%; animation: spin .8s linear infinite; margin-bottom: 14px; }
+.spinner { display: inline-block; width: 28px; height: 28px; border: 3px solid #e8d8b8; border-top-color: #7d1a1a; border-radius: 50%; animation: spin .8s linear infinite; margin-bottom: 12px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 @media(max-width:480px) {
   .filter-row { flex-direction: column; }
   .fg { min-width: 100%; }
-  .card { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 14px 14px 18px; }
+  .card { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 14px 12px 18px; }
   .tcol { text-align: left; min-width: unset; }
   .divdr { display: none; }
   .mcol { width: 100%; }
-  .header .logo { width: 84px; height: 84px; }
-  .header h1 { font-size: 1.3rem; }
-  .badge { font-size: 0.78rem; padding: 6px 13px 6px 9px; }
-  .banner-title { font-size: 1.15rem; }
-  .banner-title .ornament-side { margin: 0 8px; }
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo-wrap">
-    <div class="logo"><img src="logo.png" alt="NA Coptic League"></div>
-  </div>
-  <h1>Welcome to the 2026 NA Coptic League Season</h1>
-  <div class="ornament">✦ ✦ ✦</div>
-</div>
-
 <div class="section">
-  <div class="section-title">📖 Verse of the Day</div>
-  <div class="verse-text" id="verseText"></div>
-  <div class="verse-ref" id="verseRef"></div>
+  <div class="section-title">🏀 Full Season</div>
 </div>
-
-<div class="section alt welcome">
-  <div class="section-title">📅 Schedule Updates</div>
-  <p>More games are being added. You'll get an app notification each time the schedule is updated.</p>
-</div>
-
-<div class="section welcome">
-  <div class="section-title">❓ Questions?</div>
-  <p>Contact your church coordinator or submit a <a href="https://nacopticleague.chmeetings.com/" target="_blank">Contact Us Form</a>.</p>
-</div>
-
-<div class="section alt">
-  <div class="section-title">📜 Official Rules &amp; Regulations</div>
-  <div class="rules-link-wrap">
-    <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank">Click Here to Read</a>
-  </div>
-  <div class="rules-sub">2026 Season · May – July 2026</div>
-</div>
-
-<div class="banner-title"><span class="ornament-side">✦</span>2026 Season Full Schedule<span class="ornament-side">✦</span></div>
 
 <div class="filters">
   <div class="filter-row">
@@ -194,49 +123,6 @@ body { font-family: 'Cormorant Garamond', Georgia, serif; background: #fdf6e3; m
 </div></div>
 
 <script>
-var VERSES = [
-  {text:"For I know that my Redeemer lives, And He shall stand at last on the earth;",ref:"Job 19:25"},
-  {text:"The Lord is my shepherd; I shall not want.",ref:"Psalm 23:1"},
-  {text:"I can do all things through Christ who strengthens me.",ref:"Philippians 4:13"},
-  {text:"Trust in the Lord with all your heart, And lean not on your own understanding;",ref:"Proverbs 3:5"},
-  {text:"Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go.",ref:"Joshua 1:9"},
-  {text:"For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.",ref:"John 3:16"},
-  {text:"The Lord is my light and my salvation; Whom shall I fear?",ref:"Psalm 27:1"},
-  {text:"But those who wait on the Lord shall renew their strength; They shall mount up with wings like eagles.",ref:"Isaiah 40:31"},
-  {text:"And we know that all things work together for good to those who love God.",ref:"Romans 8:28"},
-  {text:"Come to Me, all you who labor and are heavy laden, and I will give you rest.",ref:"Matthew 11:28"},
-  {text:"The Lord bless you and keep you; The Lord make His face shine upon you, And be gracious to you.",ref:"Numbers 6:24-25"},
-  {text:"He has shown you, O man, what is good; And what does the Lord require of you but to do justly, to love mercy, and to walk humbly with your God?",ref:"Micah 6:8"},
-  {text:"Do not fear, for I am with you; Do not be dismayed, for I am your God.",ref:"Isaiah 41:10"},
-  {text:"Blessed are the peacemakers, For they shall be called sons of God.",ref:"Matthew 5:9"},
-  {text:"Let all that you do be done with love.",ref:"1 Corinthians 16:14"},
-  {text:"Delight yourself also in the Lord, And He shall give you the desires of your heart.",ref:"Psalm 37:4"},
-  {text:"The name of the Lord is a strong tower; The righteous run to it and are safe.",ref:"Proverbs 18:10"},
-  {text:"For where two or three are gathered together in My name, I am there in the midst of them.",ref:"Matthew 18:20"},
-  {text:"This is the day the Lord has made; We will rejoice and be glad in it.",ref:"Psalm 118:24"},
-  {text:"In everything give thanks; for this is the will of God in Christ Jesus for you.",ref:"1 Thessalonians 5:18"},
-  {text:"Have I not commanded you? Be strong and of good courage; do not be afraid.",ref:"Joshua 1:9"},
-  {text:"The Lord is near to all who call upon Him, To all who call upon Him in truth.",ref:"Psalm 145:18"},
-  {text:"But the fruit of the Spirit is love, joy, peace, longsuffering, kindness, goodness, faithfulness, gentleness, self-control.",ref:"Galatians 5:22-23"},
-  {text:"Cast your burden on the Lord, And He shall sustain you.",ref:"Psalm 55:22"},
-  {text:"Jesus said to him, 'I am the way, the truth, and the life.'",ref:"John 14:6"},
-  {text:"The Lord is good, A stronghold in the day of trouble; And He knows those who trust in Him.",ref:"Nahum 1:7"},
-  {text:"Grace to you and peace from God our Father and the Lord Jesus Christ.",ref:"Philippians 1:2"},
-  {text:"My grace is sufficient for you, for My strength is made perfect in weakness.",ref:"2 Corinthians 12:9"},
-  {text:"Rejoice always, pray without ceasing.",ref:"1 Thessalonians 5:16-17"},
-  {text:"The Lord your God in your midst, The Mighty One, will save; He will rejoice over you with gladness.",ref:"Zephaniah 3:17"},
-  {text:"Every good gift and every perfect gift is from above, and comes down from the Father of lights.",ref:"James 1:17"}
-];
-
-(function(){
-  var now = new Date();
-  var start = new Date(now.getFullYear(), 0, 0);
-  var dayOfYear = Math.floor((now - start) / 86400000);
-  var v = VERSES[dayOfYear % VERSES.length];
-  document.getElementById('verseText').textContent = v.text;
-  document.getElementById('verseRef').textContent = v.ref;
-})();
-
 var VENUES = {
   HC: { name: "Holy Child Catholic Church", url: "https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312" },
   BK: { name: "St. George Community Center", url: "https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219" },
@@ -251,7 +137,6 @@ var VENUES = {
 
 var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
 
-// Games are loaded dynamically from data/games.json (synced from your Google Sheet).
 var GAMES = [];
 
 function loadGames() {
@@ -261,12 +146,7 @@ function loadGames() {
     .then(function(data){
       GAMES = (Array.isArray(data) ? data : []).map(function(g){
         return {
-          t1: g.t1 || '',
-          t2: g.t2 || '',
-          div: g.div || '',
-          date: g.date || '',
-          time: g.time || '',
-          v: g.v || '',
+          t1: g.t1 || '', t2: g.t2 || '', div: g.div || '', date: g.date || '', time: g.time || '', v: g.v || '',
           s1: (g.s1 === '' || g.s1 == null) ? null : g.s1,
           s2: (g.s2 === '' || g.s2 == null) ? null : g.s2
         };
@@ -275,38 +155,23 @@ function loadGames() {
       render();
     })
     .catch(function(err){
-      document.getElementById('out').innerHTML =
-        '<div class="empty"><div class="icon">⚠️</div><h3>Could not load games</h3>' +
-        '<p>'+err.message+'<br>Try refreshing in a minute.</p></div>';
+      document.getElementById('out').innerHTML = '<div class="empty"><div class="icon">⚠️</div><h3>Could not load games</h3><p>'+err.message+'</p></div>';
     });
 }
 
 function stripParens(name) { return name.replace(/[()]/g, ''); }
-
-function addHour(time) {
-  var parts = time.split(' '), hm = parts[0].split(':'), h = parseInt(hm[0]), m = hm[1], ampm = parts[1];
-  var endH = h + 1, endAmpm = ampm;
-  if (h === 11 && ampm === 'AM') endAmpm = 'PM';
-  if (h === 11 && ampm === 'PM') endAmpm = 'AM';
-  if (endH > 12) endH -= 12;
-  return parts[0] + ' ' + ampm + ' – ' + endH + ':' + m + ' ' + endAmpm;
-}
-
-function timeSort(a, b) {
-  function to24(t) { var p = t.split(' '), hm = p[0].split(':'), h = +hm[0], m = +hm[1]; if (p[1]==='PM'&&h!==12) h+=12; if (p[1]==='AM'&&h===12) h=0; return h*60+m; }
-  return to24(a.time) - to24(b.time);
-}
-
-function fmtDateLabel(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}); }
-function fmtDateLong(d) { return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }
+function addHour(time) { var p=time.split(' '),hm=p[0].split(':'),h=parseInt(hm[0]),m=hm[1],ap=p[1],eh=h+1,eap=ap; if(h===11&&ap==='AM')eap='PM'; if(h===11&&ap==='PM')eap='AM'; if(eh>12)eh-=12; return p[0]+' '+ap+' – '+eh+':'+m+' '+eap; }
+function timeSort(a,b){function to24(t){var p=t.split(' '),hm=p[0].split(':'),h=+hm[0],m=+hm[1];if(p[1]==='PM'&&h!==12)h+=12;if(p[1]==='AM'&&h===12)h=0;return h*60+m;}return to24(a.time)-to24(b.time);}
+function fmtDateLabel(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});}
+function fmtDateLong(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 
 function buildDateFilter() {
   var sel = document.getElementById('fdate'), dateSet = {};
-  GAMES.forEach(function(g) { dateSet[g.date] = true; });
+  GAMES.forEach(function(g){ dateSet[g.date] = true; });
   var allDates = Object.keys(dateSet).sort(), today = new Date(); today.setHours(0,0,0,0);
   sel.innerHTML = '<option value="ALL">All Dates</option>';
   var closestIdx = 0, closestDiff = Infinity;
-  allDates.forEach(function(d, idx) {
+  allDates.forEach(function(d, idx){
     var o = document.createElement('option'); o.value = d; o.text = fmtDateLabel(d); sel.appendChild(o);
     var diff = new Date(d+'T12:00:00') - today;
     if (diff >= 0 && diff < closestDiff) { closestDiff = diff; closestIdx = idx + 1; }
@@ -316,32 +181,31 @@ function buildDateFilter() {
 }
 
 function render() {
-  var dateF = document.getElementById('fdate').value, divF = document.getElementById('fdiv').value, venF = document.getElementById('fvenue').value, out = document.getElementById('out');
-  var filtered = GAMES.filter(function(g) {
-    if (dateF !== 'ALL' && g.date !== dateF) return false;
-    if (divF && g.div !== divF) return false;
-    if (venF && g.v !== venF) return false;
+  var dateF=document.getElementById('fdate').value, divF=document.getElementById('fdiv').value, venF=document.getElementById('fvenue').value, out=document.getElementById('out');
+  var filtered = GAMES.filter(function(g){
+    if(dateF !== 'ALL' && g.date !== dateF) return false;
+    if(divF && g.div !== divF) return false;
+    if(venF && g.v !== venF) return false;
     return true;
   });
   if (!filtered.length) {
     var ev = VENUES[venF] ? VENUES[venF].name : '', ed = (dateF !== 'ALL') ? ' on ' + fmtDateLong(dateF) : '';
-    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + (ev ? 'No games currently scheduled' + ed + ' at ' + ev + '.' : 'No games found — try a different filter!') + '</h3><p>Try selecting a different date or venue, or check back later as games are still being added.</p></div>';
+    out.innerHTML = '<div class="empty"><div class="icon">🏀</div><h3>' + (ev ? 'No games scheduled' + ed + ' at ' + ev : 'No games found') + '</h3><p>Try a different filter or check back later.</p></div>';
     return;
   }
   var byDate = {};
-  filtered.forEach(function(g) { if (!byDate[g.date]) byDate[g.date] = []; byDate[g.date].push(g); });
+  filtered.forEach(function(g){ if(!byDate[g.date]) byDate[g.date] = []; byDate[g.date].push(g); });
   var dates = Object.keys(byDate).sort(), total = filtered.length, vn = VENUES[venF];
   var divLabel = divF ? (DIV_LABELS[divF] || divF) : 'All Divisions';
-  var venueLink = vn ? '<a href="' + vn.url + '" target="_blank">' + vn.name + ' — click here for directions</a>' : '';
-  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + total + ' game' + (total !== 1 ? 's' : '') + ' &middot; ' + venueLink + '</div></div>';
-  dates.forEach(function(date) {
+  var venueLink = vn ? '<a href="' + vn.url + '" target="_blank">' + vn.name + ' — directions</a>' : '';
+  var h = '<div class="statsbar"><div class="badge"><div class="dot"></div>' + divLabel + '</div><div class="cnt">' + total + ' game' + (total !== 1 ? 's' : '') + (venueLink ? ' &middot; ' + venueLink : '') + '</div></div>';
+  dates.forEach(function(date){
     var games = byDate[date].sort(timeSort), dl = fmtDateLong(date);
     h += '<div class="dg"><div class="dh"><span class="dlabel">' + dl + '</span><span class="dcount">' + games.length + ' game' + (games.length !== 1 ? 's' : '') + '</span><div class="dline"></div></div>';
-    games.forEach(function(g) {
+    games.forEach(function(g){
       var tr = addHour(g.time), dtag = '<span class="div-tag">' + (DIV_LABELS[g.div] || g.div) + '</span>';
       var t1name = stripParens(g.t1), t2name = stripParens(g.t2);
-      var finalHtml = '';
-      var t1display = t1name, t2display = t2name;
+      var finalHtml = '', t1display = t1name, t2display = t2name;
       if (g.s1 != null && g.s2 != null) {
         t1display = t1name + ' [' + g.s1 + ']';
         t2display = t2name + ' [' + g.s2 + ']';

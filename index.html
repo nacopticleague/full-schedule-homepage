@@ -5,106 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 NA Coptic League</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { overflow-y: auto; }
-body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; }
+body { font-family: 'Cormorant Garamond', Georgia, serif; background: #fdf6e3; margin: 0; padding: 0; color: #2a1414; }
 
 /* ── Header ── */
-.header { background: #7d1a1a; padding: 22px 20px; text-align: center; }
-.header h1 { font-family: Georgia, serif; font-size: 1.5rem; color: #e07878; font-weight: 700; }
+.header { background: linear-gradient(180deg, #8b1c1c 0%, #5c1010 100%); padding: 24px 20px 28px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 4px 16px rgba(80,20,20,.35); }
+.header::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, transparent, #d4a73a 30%, #f0d680 50%, #d4a73a 70%, transparent); }
+.header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:5px; background: linear-gradient(90deg, #b8901c 0%, #f0d680 50%, #b8901c 100%); }
+.header .logo-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+.header .logo { width: 100px; height: 100px; border-radius: 50%; background: #fff; padding: 4px; box-shadow: 0 0 0 3px #d4a73a, 0 0 0 4px #b8901c, 0 6px 18px rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; }
+.header .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; color: #f0d680; font-weight: 800; letter-spacing: 0.04em; text-shadow: 1px 1px 2px rgba(0,0,0,.4); }
+.header .ornament { color: #d4a73a; font-size: 0.75rem; margin-top: 8px; letter-spacing: 0.5em; opacity: 0.9; }
 
 /* ── Sections ── */
-.section { max-width: 660px; margin: 0 auto; padding: 24px 16px; border-bottom: 1px solid #d8c8ba; }
-.section:last-of-type { border-bottom: none; }
-.section-title { font-family: Georgia, serif; font-size: 1.1rem; color: #7d1a1a; font-weight: 700; text-align: center; margin-bottom: 12px; }
+.section { max-width: 660px; margin: 0 auto; padding: 28px 18px; position: relative; }
+.section.alt { background: linear-gradient(180deg, #7d1a1a 0%, #5c1010 100%); color: #f5e5b8; max-width: 100%; padding: 28px 18px; border-top: 3px solid #d4a73a; border-bottom: 3px solid #d4a73a; box-shadow: inset 0 4px 12px rgba(0,0,0,.25); }
+.section.alt .section-title { color: #f0d680; }
+.section.alt .section-title::after { background: linear-gradient(90deg, transparent, #d4a73a, transparent); }
+.section.alt p { color: #f5e5b8; font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+.section.alt a { color: #f0d680; text-decoration: underline; font-weight: 700; }
+.section.alt a:hover { color: #fff; }
+.section.alt strong { color: #f0d680; }
+.section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; color: #7d1a1a; font-weight: 800; text-align: center; margin-bottom: 14px; letter-spacing: 0.03em; }
+.section-title::after { content: ''; display: block; width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #d4a73a, transparent); margin: 10px auto 0; }
 
 /* ── Verse ── */
-.verse-text { font-family: Georgia, serif; font-size: 1rem; color: #222; line-height: 1.6; text-align: center; margin-bottom: 8px; }
-.verse-ref { font-size: 0.82rem; color: #888; text-align: center; }
+.verse-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; color: #2a1414; line-height: 1.6; text-align: center; margin-bottom: 10px; font-style: italic; padding: 0 8px; }
+.verse-ref { font-size: 0.88rem; color: #7d1a1a; text-align: center; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.06em; font-weight: 600; }
 
-/* ── Welcome ── */
-.welcome p { font-size: 0.9rem; color: #333; line-height: 1.7; margin-bottom: 12px; text-align: center; }
-.welcome a { color: #2d3a8c; font-weight: 700; text-decoration: underline; }
-.welcome strong { color: #7d1a1a; }
-.welcome ul { margin: 0 0 12px 0; padding: 0; list-style-position: inside; font-size: 0.9rem; color: #333; line-height: 1.8; text-align: center; }
-.welcome em { color: #333; }
-
-/* ── Waiver ── */
-.waiver-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #7d1a1a; font-weight: 700; text-decoration: underline; margin-bottom: 6px; }
-.waiver-link:hover { color: #5c1010; }
-.waiver-deadline { font-size: 0.78rem; color: #888; text-align: center; }
+/* ── Welcome (cream sections) ── */
+.welcome p { font-size: 1rem; color: #2a1414; line-height: 1.7; text-align: center; }
+.welcome a { color: #7d1a1a; font-weight: 700; text-decoration: underline; }
+.welcome a:hover { color: #5c1010; }
 
 /* ── Rules ── */
-.rules-link { display: block; text-align: center; font-family: Georgia, serif; font-size: 1rem; color: #222; font-weight: 700; text-decoration: none; }
-.rules-link:hover { color: #7d1a1a; text-decoration: underline; }
-.rules-sub { font-size: 0.75rem; color: #888; text-align: center; margin-top: 4px; }
+.rules-link { display: inline-block; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-size: 0.92rem; color: #5c1010; background: linear-gradient(180deg, #f0d680 0%, #d4a73a 100%); padding: 11px 32px; border-radius: 28px; font-weight: 800; text-decoration: none; transition: transform .15s, box-shadow .15s; box-shadow: 0 4px 12px rgba(0,0,0,.3); border: 1.5px solid #b8901c; letter-spacing: 0.08em; text-transform: uppercase; }
+.rules-link:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.35); }
+.rules-link-wrap { text-align: center; margin: 14px 0 6px; }
+.rules-sub { font-size: 0.85rem; text-align: center; margin-top: 10px; font-style: italic; }
 
-/* ── Notice ── */
-.notice { padding: 10px 16px; font-size: 0.78rem; font-weight: 600; color: #5c1010; background: #e8ddd3; text-align: center; border-bottom: 1px solid #d0bfaf; }
+/* ── Banner section title (Full Schedule) ── */
+.banner-title { background: linear-gradient(180deg, #7d1a1a, #5c1010); color: #f0d680; max-width: 100%; padding: 22px 18px; text-align: center; font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 800; letter-spacing: 0.05em; border-top: 3px solid #d4a73a; border-bottom: 3px solid #d4a73a; box-shadow: inset 0 4px 12px rgba(0,0,0,.25); }
+.banner-title .ornament-side { color: #d4a73a; margin: 0 14px; font-size: 0.95rem; vertical-align: middle; }
 
 /* ── Filters ── */
-.filters { background: #d8c8ba; border-bottom: 2px solid #b8a492; padding: 14px 16px; }
+.filters { background: linear-gradient(180deg, #fcf3da, #e8d8b8); border-bottom: 3px solid #d4a73a; padding: 18px 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
 .filter-row { display: flex; gap: 12px; flex-wrap: wrap; max-width: 660px; margin: 0 auto; }
 .fg { flex: 1; min-width: 140px; }
-.fg label { display: block; font-size: 0.7rem; font-weight: 700; color: #5c1010; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
-.fg select { width: 100%; padding: 9px 12px; border: 2px solid #b8a492; border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: #5c1010; background: #fff; cursor: pointer; }
-.fg select:focus { outline: 2px solid #7d1a1a; }
+.fg label { display: block; font-family: 'Playfair Display', serif; font-size: 0.72rem; font-weight: 800; color: #5c1010; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 6px; text-align: center; }
+.fg select { width: 100%; padding: 10px 12px; border: 2px solid #b8901c; border-radius: 6px; font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 600; color: #5c1010; background: #fffdf6; cursor: pointer; }
+.fg select:focus { outline: 2px solid #d4a73a; border-color: #d4a73a; }
 
 /* ── Main ── */
-.main { width: 100%; background: #fff; }
-.main #out { max-width: 660px; margin: 0 auto; padding: 18px 14px 10px; }
+.main { width: 100%; background: #fdf6e3; }
+.main #out { max-width: 660px; margin: 0 auto; padding: 24px 14px; }
 
 /* ── Empty ── */
-.empty { background: #fff; border-radius: 10px; text-align: center; padding: 44px 20px; box-shadow: 0 2px 10px rgba(80,20,20,.1); }
-.empty .icon { font-size: 2.4rem; margin-bottom: 10px; }
-.empty h3 { font-family: Georgia, serif; color: #7d1a1a; font-size: 1rem; margin-bottom: 6px; }
-.empty p { font-size: 0.85rem; color: #555; line-height: 1.6; }
+.empty { background: #fff; border-radius: 12px; text-align: center; padding: 50px 22px; box-shadow: 0 3px 14px rgba(80,20,20,.12); border-top: 4px solid #d4a73a; border-bottom: 1px solid #e8d8b8; }
+.empty .icon { font-size: 2.6rem; margin-bottom: 12px; }
+.empty h3 { font-family: 'Playfair Display', Georgia, serif; color: #7d1a1a; font-size: 1.1rem; margin-bottom: 8px; font-weight: 800; }
+.empty p { font-size: 0.95rem; color: #555; line-height: 1.6; }
 
 /* ── Stats bar ── */
-.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
-.badge { display: inline-flex; align-items: center; gap: 6px; background: #7d1a1a; color: #fff; padding: 5px 13px 5px 9px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
-.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: #e07878; }
-.cnt { font-size: 0.76rem; color: #5c1010; font-weight: 600; }
-.cnt a { color: #2d3a8c; text-decoration: underline; }
-.cnt a:hover { color: #7d1a1a; }
+.statsbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid #e8d8b8; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(180deg, #8b1c1c, #5c1010); color: #f0d680; padding: 7px 16px 7px 11px; border-radius: 22px; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; box-shadow: 0 3px 8px rgba(125,26,26,.3); border: 1px solid #d4a73a; letter-spacing: 0.03em; }
+.badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #d4a73a; box-shadow: 0 0 5px rgba(212,167,58,.7); }
+.cnt { font-size: 0.88rem; color: #5c1010; font-weight: 600; font-family: 'Cormorant Garamond', serif; }
+.cnt a { color: #7d1a1a; text-decoration: underline; font-weight: 700; }
+.cnt a:hover { color: #5c1010; }
 
 /* ── Day group ── */
-.dg { margin-bottom: 20px; }
+.dg { margin-bottom: 26px; }
 .dg:last-child { margin-bottom: 0; }
-.dh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.dlabel { font-family: Georgia, serif; font-size: 0.8rem; font-weight: 700; color: #5c1010; white-space: nowrap; }
-.dcount { font-size: 0.7rem; font-weight: 700; color: #fff; background: #7d1a1a; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
-.dline { flex: 1; height: 1px; background: #b8a492; }
+.dh { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 10px 0; border-bottom: 1px solid #e8d8b8; }
+.dlabel { font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; font-weight: 800; color: #5c1010; white-space: nowrap; letter-spacing: 0.02em; }
+.dcount { font-size: 0.7rem; font-weight: 800; color: #5c1010; background: linear-gradient(180deg, #f0d680, #d4a73a); padding: 3px 11px; border-radius: 12px; white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,.15); border: 1px solid #b8901c; }
+.dline { flex: 1; height: 2px; background: linear-gradient(90deg, #d4a73a, transparent); }
 
 /* ── Game card ── */
-.card { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(80,20,20,.08); padding: 6px 12px; margin-bottom: 5px; border-left: 4px solid #7d1a1a; display: flex; align-items: center; gap: 10px; }
-.card:hover { background: #faf6f2; }
+.card { background: #fff; border-radius: 8px; box-shadow: 0 3px 12px rgba(80,20,20,.1); padding: 12px 14px 12px 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; transition: transform .15s, box-shadow .15s; position: relative; overflow: hidden; }
+.card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #7d1a1a 0%, #d4a73a 50%, #7d1a1a 100%); }
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(80,20,20,.18); }
 .tcol { text-align: center; min-width: 110px; flex-shrink: 0; }
-.thour { font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; }
-.divdr { width: 1px; height: 28px; background: #d8c8ba; flex-shrink: 0; }
+.thour { font-family: 'Playfair Display', Georgia, serif; font-size: 0.78rem; font-weight: 700; color: #7d1a1a; line-height: 1.3; letter-spacing: 0.02em; }
+.divdr { width: 2px; height: 32px; background: linear-gradient(180deg, transparent, #d4a73a, transparent); flex-shrink: 0; }
 .mcol { flex: 1; min-width: 0; }
-.teams { font-weight: 700; font-size: 0.82rem; color: #222; }
-.teams .sep { color: #7d1a1a; margin: 0 4px; }
-.div-tag { display: inline-block; font-size: 0.58rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #f0e6dd; color: #7d1a1a; letter-spacing: .04em; text-transform: uppercase; margin-left: 6px; }
-.final { font-size: 0.65rem; color: #888; margin-top: 2px; }
+.teams { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: #2a1414; line-height: 1.3; }
+.teams .sep { color: #d4a73a; margin: 0 6px; font-weight: 800; font-size: 0.85rem; }
+.div-tag { display: inline-block; font-size: 0.6rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; background: linear-gradient(180deg, #f0d680, #d4a73a); color: #5c1010; letter-spacing: .06em; text-transform: uppercase; margin-left: 8px; border: 1px solid #b8901c; vertical-align: middle; }
+.final { font-size: 0.72rem; color: #888; margin-top: 4px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 
 /* ── Spinner ── */
-.spinner{display:inline-block;width:24px;height:24px;border:3px solid #e8ddd3;border-top-color:#7d1a1a;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
-@keyframes spin{to{transform:rotate(360deg);}}
+.spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #e8d8b8; border-top-color: #7d1a1a; border-radius: 50%; animation: spin .8s linear infinite; margin-bottom: 14px; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 @media(max-width:480px) {
   .filter-row { flex-direction: column; }
   .fg { min-width: 100%; }
-  .card { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 12px; }
+  .card { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 14px 14px 18px; }
   .tcol { text-align: left; min-width: unset; }
   .divdr { display: none; }
   .mcol { width: 100%; }
+  .header .logo { width: 84px; height: 84px; }
+  .header h1 { font-size: 1.3rem; }
+  .badge { font-size: 0.78rem; padding: 6px 13px 6px 9px; }
+  .banner-title { font-size: 1.15rem; }
+  .banner-title .ornament-side { margin: 0 8px; }
 }
 </style>
 </head>
 <body>
 
-<div class="header"><h1>Welcome to the 2026 NA Coptic League Season</h1></div>
+<div class="header">
+  <div class="logo-wrap">
+    <div class="logo"><img src="logo.png" alt="NA Coptic League"></div>
+  </div>
+  <h1>Welcome to the 2026 NA Coptic League Season</h1>
+  <div class="ornament">✦ ✦ ✦</div>
+</div>
 
 <div class="section">
   <div class="section-title">📖 Verse of the Day</div>
@@ -112,27 +134,25 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
   <div class="verse-ref" id="verseRef"></div>
 </div>
 
+<div class="section alt welcome">
+  <div class="section-title">📅 Schedule Updates</div>
+  <p>More games are being added. You'll get an app notification each time the schedule is updated.</p>
+</div>
+
 <div class="section welcome">
-  <div class="section-title">🏀 Welcome to the 2026 NA Coptic League Season! 🏀</div>
-  <p>It's that time of year again, another amazing season of fun, fellowship, and basketball!</p>
-  <p>We pray that our Lord Jesus Christ continues to bless:</p>
-  <ul>
-    <li>Our beloved bishops, Bishop David, Bishop Karas, and Bishop Gabriel</li>
-    <li>Our priests, administrators, players, coaches, assistant coaches, referees, church coordinators, fans, and all devoted servants</li>
-  </ul>
-  <p><em>Have any questions?</em></p>
-  <p>Reach out to your <strong>church coordinator</strong> or submit a <a href="https://nacopticleague.chmeetings.com" target="_blank">Contact Us Form</a>.</p>
+  <div class="section-title">❓ Questions?</div>
+  <p>Contact your church coordinator or submit a <a href="https://nacopticleague.chmeetings.com/" target="_blank">Contact Us Form</a>.</p>
 </div>
 
-<div class="section">
-  <div class="section-title">NA Coptic League</div>
-  <div class="rules-sub">Official Rules &amp; Regulations &middot; 2026 Season [May 2026 – July 2026]</div>
-  <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank" style="margin-top:12px;">CLICK HERE TO READ Official Rules and Regulations</a>
+<div class="section alt">
+  <div class="section-title">📜 Official Rules &amp; Regulations</div>
+  <div class="rules-link-wrap">
+    <a class="rules-link" href="https://nacopticleague.chmeetings.com/BE9D477537C5AF0F/articles/8DFD2C443EBC533B" target="_blank">Click Here to Read</a>
+  </div>
+  <div class="rules-sub">2026 Season · May – July 2026</div>
 </div>
 
-<div class="header"><h1>2026 Season — Full Schedule</h1></div>
-
-<div class="notice">More games will be added — check back for schedule updates.</div>
+<div class="banner-title"><span class="ornament-side">✦</span>2026 Season Full Schedule<span class="ornament-side">✦</span></div>
 
 <div class="filters">
   <div class="filter-row">
@@ -161,6 +181,9 @@ body { font-family: Arial, sans-serif; background: #fff; margin: 0; padding: 0; 
         <option value="LI">St. Mark Coptic Center LI</option>
         <option value="CYO">CYO MIV</option>
         <option value="SJN">St. John Neumann</option>
+        <option value="GC">Kimisis Tis Theotokou Greek Orthodox Church</option>
+        <option value="MSK1">Multi Sports Kingdom — Court #1</option>
+        <option value="MSK2">Multi Sports Kingdom — Court #2</option>
       </select>
     </div>
   </div>
@@ -220,7 +243,10 @@ var VENUES = {
   EB: { name: "St. Mark Coptic Christian Academy", url: "https://maps.google.com/?q=80+David+St,+South+River,+NJ+08882" },
   LI: { name: "St. Mark Coptic Center LI", url: "https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797" },
   CYO: { name: "CYO MIV", url: "https://maps.google.com/?q=CYO+MIV" },
-  SJN: { name: "St. John Neumann", url: "https://maps.google.com/?q=St+John+Neumann" }
+  SJN: { name: "St. John Neumann", url: "https://maps.google.com/?q=St+John+Neumann" },
+  GC: { name: "Kimisis Tis Theotokou Greek Orthodox Church", url: "https://maps.google.com/?q=20+Hillcrest+Rd,+Holmdel,+NJ+07733" },
+  MSK1: { name: "Multi Sports Kingdom — Court #1", url: "https://maps.google.com/?q=2+Timber+Ln,+Marlboro+Township,+NJ+07746" },
+  MSK2: { name: "Multi Sports Kingdom — Court #2", url: "https://maps.google.com/?q=2+Timber+Ln,+Marlboro+Township,+NJ+07746" }
 };
 
 var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
@@ -229,13 +255,11 @@ var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Gir
 var GAMES = [];
 
 function loadGames() {
-  // Cache-buster so we always see fresh data after the sheet pushes a commit
   var url = 'data/games.json?_=' + Date.now();
   fetch(url)
     .then(function(res){ if(!res.ok) throw new Error('HTTP '+res.status); return res.json(); })
     .then(function(data){
       GAMES = (Array.isArray(data) ? data : []).map(function(g){
-        // Normalize empty score strings to null so the score-display logic works correctly
         return {
           t1: g.t1 || '',
           t2: g.t2 || '',
@@ -330,7 +354,6 @@ function render() {
   out.innerHTML = h;
 }
 
-// Kick off the load on page open
 loadGames();
 
 function broadcastHeight() { window.parent.postMessage({ type: 'resize', height: document.body.scrollHeight }, '*'); }

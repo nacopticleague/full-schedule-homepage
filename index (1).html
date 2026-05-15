@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 NA Coptic League — Season Schedule</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial, sans-serif;background:#fff;}
+
+/* ── Header ── */
+.header{background:#7d1a1a;padding:18px 20px 16px;text-align:center;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#c9b5a5,#e07878,#c9b5a5);}
+.header h1{font-family:Arial, sans-serif;font-size:1.55rem;color:#e8b4b4;font-weight:800;letter-spacing:.02em;}
+.header .sub{font-size:.72rem;color:#c98a8a;margin-top:4px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+
+/* ── Filters ── */
+.filters{background:#d8c8ba;border-bottom:2px solid #b8a492;padding:16px 16px 14px;}
+.filter-row{display:flex;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto;}
+.fg{flex:1;min-width:140px;}
+.fg label{display:block;font-size:.68rem;font-weight:700;color:#5c1010;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:Arial, sans-serif;}
+.fg select{width:100%;padding:9px 12px;border:2px solid #b8a492;border-radius:6px;font-size:.88rem;font-weight:600;color:#5c1010;background:#fff;cursor:pointer;font-family:Arial, sans-serif;transition:border-color .2s;}
+.fg select:focus{outline:none;border-color:#7d1a1a;box-shadow:0 0 0 3px rgba(125,26,26,.15);}
+
+/* ── Main ── */
+.main{max-width:700px;margin:0 auto;padding:16px 14px 28px;width:100%;}
+
+/* ── Stats bar ── */
+.statsbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:#7d1a1a;color:#fff;padding:5px 14px;border-radius:14px;font-size:.78rem;font-weight:700;font-family:Arial, sans-serif;}
+.cnt{font-size:.82rem;color:#5c1010;font-weight:600;}
+.cnt a{color:#5c1010;text-decoration:underline;font-weight:700;}
+.cnt a:hover{color:#7d1a1a;}
+
+/* ── Day block ── */
+.day-block{margin-bottom:28px;}
+.day-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.day-name{font-family:Arial, sans-serif;font-size:1.1rem;font-weight:700;color:#5c1010;white-space:nowrap;}
+.day-count{font-size:.7rem;font-weight:700;color:#fff;background:#7d1a1a;padding:2px 9px;border-radius:10px;white-space:nowrap;}
+.day-line{flex:1;height:1px;background:#b8a492;}
+
+/* ── Game card ── */
+.card{background:#fff;border-radius:8px;box-shadow:0 1px 6px rgba(80,20,20,.07);border:1px solid #eee4dc;padding:10px 14px;margin-bottom:7px;transition:background .15s;}
+.card:hover{background:#faf6f2;}
+.card-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid #f0e6dd;}
+.game-time{font-family:Arial, sans-serif;font-size:.8rem;font-weight:700;color:#5c1010;}
+.game-status{font-size:.6rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.08em;}
+.game-status.final{color:#5c1010;background:#f0e6dd;padding:2px 7px;border-radius:3px;}
+.team-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;gap:10px;}
+.team-row .team-name{font-size:.92rem;color:#555;font-weight:600;flex:1;min-width:0;}
+.team-row .team-score{font-size:1.05rem;color:#888;font-weight:700;min-width:32px;text-align:right;line-height:1;}
+.team-row.win .team-name{color:#5c1010;font-weight:800;}
+.team-row.win .team-score{color:#7d1a1a;font-weight:800;}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding-top:6px;border-top:1px solid #f0e6dd;flex-wrap:wrap;gap:8px;}
+.venue-line{font-size:.74rem;color:#666;font-weight:600;}
+.venue-line a{color:#5c1010;text-decoration:underline;font-weight:700;}
+.venue-line a:hover{color:#7d1a1a;}
+.div-tag{display:inline-block;font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:3px;background:#7d1a1a;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+
+/* ── Empty / Loading ── */
+.empty{background:#fff;border-radius:10px;border:1px solid #eee4dc;text-align:center;padding:44px 20px;box-shadow:0 2px 10px rgba(80,20,20,.08);}
+.empty .icon{font-size:2.4rem;margin-bottom:10px;}
+.empty h3{font-family:Arial, sans-serif;color:#5c1010;font-size:1.05rem;margin-bottom:8px;font-weight:700;}
+.empty p{font-size:.92rem;color:#666;line-height:1.6;}
+.spinner{display:inline-block;width:28px;height:28px;border:3px solid #eee4dc;border-top-color:#7d1a1a;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:520px){
+  .filter-row{flex-direction:column;}
+  .fg{min-width:100%;}
+  .header h1{font-size:1.3rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>2026 Season Schedule</h1>
+  <div class="sub">NA Coptic League &middot; May – July 2026</div>
+</div>
+
+<div class="filters">
+  <div class="filter-row">
+    <div class="fg">
+      <label>Date</label>
+      <select id="fdate" onchange="render()"></select>
+    </div>
+    <div class="fg">
+      <label>Division</label>
+      <select id="fdiv" onchange="render()">
+        <option value="">All Divisions</option>
+        <option value="JHS">Junior High School (JHS)</option>
+        <option value="Girls">Girls</option>
+        <option value="HS-NY">High School — NY</option>
+        <option value="HS-NJ">High School — NJ</option>
+        <option value="College">College</option>
+        <option value="Mens">Mens</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>Venue</label>
+      <select id="fvenue" onchange="render()">
+        <option value="">All Venues</option>
+        <option value="HC">Holy Child Catholic Church</option>
+        <option value="BK">St. George Community Center</option>
+        <option value="EB">St. Mark Coptic Christian Academy</option>
+        <option value="LI">St. Mark Coptic Center LI</option>
+        <option value="CYO">CYO MIV</option>
+        <option value="SJN">St. John Neumann</option>
+        <option value="GC">Kimisis Tis Theotokou Greek Orthodox Church</option>
+        <option value="SGG">Saint George Greek Orthodox Church</option>
+        <option value="MSK1">Multi Sports Kingdom — Court #1</option>
+        <option value="MSK2">Multi Sports Kingdom — Court #2</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="main"><div id="out">
+  <div class="empty"><div class="spinner"></div><h3>Loading schedule…</h3><p>One moment.</p></div>
+</div></div>
+
+<script>
+var VENUES = {
+  HC:  {name:"Holy Child Catholic Church",       url:"https://maps.google.com/?q=4747+Amboy+Rd,+Staten+Island,+NY+10312"},
+  BK:  {name:"St. George Community Center",       url:"https://maps.google.com/?q=6209+11th+Ave,+Brooklyn,+NY+11219"},
+  EB:  {name:"St. Mark Coptic Christian Academy", url:"https://maps.google.com/?q=80+David+St,+South+River,+NJ+08882"},
+  LI:  {name:"St. Mark Coptic Center LI",         url:"https://maps.google.com/?q=90+Woodbury+Rd,+Woodbury,+NY+11797"},
+  CYO: {name:"CYO MIV",                           url:"https://maps.google.com/?q=CYO+MIV"},
+  SJN: {name:"St. John Neumann",                  url:"https://maps.google.com/?q=St+John+Neumann"},
+  GC:  {name:"Kimisis Tis Theotokou Greek Orthodox Church", url:"https://maps.google.com/?q=20+Hillcrest+Rd,+Holmdel,+NJ+07733"},
+  SGG: {name:"Saint George Greek Orthodox Church",          url:"https://maps.google.com/?q=818+Valley+Rd,+Clifton,+NJ+07013"},
+  MSK1:{name:"Multi Sports Kingdom — Court #1",   url:"https://maps.google.com/?q=2+Timber+Ln,+Marlboro+Township,+NJ+07746"},
+  MSK2:{name:"Multi Sports Kingdom — Court #2",   url:"https://maps.google.com/?q=2+Timber+Ln,+Marlboro+Township,+NJ+07746"}
+};
+
+var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
+
+var GAMES = [];
+
+function loadGames(){
+  fetch('data/games.json?_='+Date.now())
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(function(d){
+      GAMES=(Array.isArray(d)?d:[]).map(function(g){
+        return {t1:g.t1||'',t2:g.t2||'',div:g.div||'',date:g.date||'',time:g.time||'',v:g.v||'',
+          s1:(g.s1===''||g.s1==null)?null:g.s1,s2:(g.s2===''||g.s2==null)?null:g.s2};
+      });
+      buildDateFilter();
+      render();
+    })
+    .catch(function(err){
+      document.getElementById('out').innerHTML='<div class="empty"><div class="icon">⚠️</div><h3>Could not load games</h3><p>'+err.message+'</p></div>';
+    });
+}
+
+function stripParens(n){return n.replace(/[()]/g,'');}
+function addHour(t){var p=t.split(' '),hm=p[0].split(':'),h=+hm[0],m=hm[1],ap=p[1],eh=h+1,eap=ap;if(h===11&&ap==='AM')eap='PM';if(h===11&&ap==='PM')eap='AM';if(eh>12)eh-=12;return p[0]+' '+ap+' – '+eh+':'+m+' '+eap;}
+function timeSort(a,b){function to24(t){var p=t.split(' '),hm=p[0].split(':'),h=+hm[0],m=+hm[1];if(p[1]==='PM'&&h!==12)h+=12;if(p[1]==='AM'&&h===12)h=0;return h*60+m;}return to24(a.time)-to24(b.time);}
+function fmtDateLabel(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});}
+function fmtDateLong(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
+
+function buildDateFilter(){
+  var sel=document.getElementById('fdate'),dateSet={};
+  GAMES.forEach(function(g){dateSet[g.date]=true;});
+  var allDates=Object.keys(dateSet).sort(),today=new Date();today.setHours(0,0,0,0);
+  sel.innerHTML='';
+  var closestIdx=0,closestDiff=Infinity;
+  allDates.forEach(function(d,idx){
+    var o=document.createElement('option');o.value=d;o.text=fmtDateLabel(d);sel.appendChild(o);
+    var diff=new Date(d+'T12:00:00')-today;
+    if(diff>=0&&diff<closestDiff){closestDiff=diff;closestIdx=idx;}
+  });
+  if(closestDiff===Infinity&&allDates.length)closestIdx=allDates.length-1;
+  sel.selectedIndex=closestIdx;
+}
+
+function render(){
+  var dateF=document.getElementById('fdate').value,
+      divF=document.getElementById('fdiv').value,
+      venF=document.getElementById('fvenue').value,
+      out=document.getElementById('out');
+  if(!dateF){out.innerHTML='<div class="empty"><div class="icon">📅</div><h3>No dates available</h3><p>Add games to the schedule to populate.</p></div>';return;}
+  var filtered=GAMES.filter(function(g){
+    if(g.date!==dateF)return false;
+    if(divF&&g.div!==divF)return false;
+    if(venF&&g.v!==venF)return false;
+    return true;
+  });
+  if(!filtered.length){
+    var ev=VENUES[venF]?VENUES[venF].name:'';
+    out.innerHTML='<div class="empty"><div class="icon">🏀</div><h3>'+(ev?'No games on '+fmtDateLong(dateF)+' at '+ev:'No games on '+fmtDateLong(dateF))+'</h3><p>Try a different filter or check back later.</p></div>';
+    return;
+  }
+  var byDate={};
+  filtered.forEach(function(g){if(!byDate[g.date])byDate[g.date]=[];byDate[g.date].push(g);});
+  var dates=Object.keys(byDate).sort(),total=filtered.length,vn=VENUES[venF];
+  var divLabel=divF?(DIV_LABELS[divF]||divF):'All Divisions';
+  var venueLink=vn?'<a href="'+vn.url+'" target="_blank">'+vn.name+' — directions</a>':'';
+  var h='<div class="statsbar"><div class="badge">'+divLabel+'</div><div class="cnt">'+total+' game'+(total!==1?'s':'')+(venueLink?' &middot; '+venueLink:'')+'</div></div>';
+  dates.forEach(function(date){
+    var games=byDate[date].sort(timeSort),dl=fmtDateLong(date);
+    h+='<div class="day-block"><div class="day-header"><span class="day-name">'+dl+'</span><span class="day-count">'+games.length+' game'+(games.length!==1?'s':'')+'</span><div class="day-line"></div></div>';
+    games.forEach(function(g){
+      var tr=addHour(g.time),dtag='<span class="div-tag">'+(DIV_LABELS[g.div]||g.div)+'</span>';
+      var t1n=stripParens(g.t1),t2n=stripParens(g.t2);
+      var played=(g.s1!=null&&g.s2!=null);
+      var t1Win=played&&g.s1>g.s2,t2Win=played&&g.s2>g.s1;
+      var statusHtml=played?'<span class="game-status final">Final</span>':'<span class="game-status">Upcoming</span>';
+      var s1Html=played?g.s1:'',s2Html=played?g.s2:'';
+      var venueHtml='';
+      if(!venF){
+        var vg=VENUES[g.v];
+        venueHtml=vg?'<div class="venue-line">📍 <a href="'+vg.url+'" target="_blank">'+vg.name+'</a></div>':'';
+      }
+      h+='<div class="card">'
+       + '<div class="card-head"><span class="game-time">'+tr+'</span>'+statusHtml+'</div>'
+       + '<div class="team-row'+(t1Win?' win':'')+'"><span class="team-name">'+t1n+'</span><span class="team-score">'+s1Html+'</span></div>'
+       + '<div class="team-row'+(t2Win?' win':'')+'"><span class="team-name">'+t2n+'</span><span class="team-score">'+s2Html+'</span></div>'
+       + '<div class="card-foot">'+(venueHtml||'<span></span>')+dtag+'</div>'
+       + '</div>';
+    });
+    h+='</div>';
+  });
+  out.innerHTML=h;
+}
+
+loadGames();
+
+function broadcastHeight(){window.parent.postMessage({type:'resize',height:document.body.scrollHeight},'*');}
+window.addEventListener('load',broadcastHeight);
+new MutationObserver(broadcastHeight).observe(document.body,{childList:true,subtree:true});
+setInterval(broadcastHeight,500);
+</script>
+</body>
+</html>

@@ -231,6 +231,44 @@ function broadcastHeight(){window.parent.postMessage({type:'resize',height:docum
 window.addEventListener('load',broadcastHeight);
 new MutationObserver(broadcastHeight).observe(document.body,{childList:true,subtree:true});
 setInterval(broadcastHeight,500);
+// ─────────────────────────────────────────────────────────────────────────────
+// IFRAME AUTO-RESIZE — reports current height to parent (ChMeetings)
+// so the iframe shrinks/grows with the filtered game list instead of leaving
+// big empty white space. Parent must run a listener (see deployment notes).
+// ─────────────────────────────────────────────────────────────────────────────
+(function setupAutoResize(){
+  if (window.parent === window) return; // not in iframe, skip
+
+  let lastH = 0;
+  function reportHeight(){
+    const h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    if (h === lastH) return;
+    lastH = h;
+    window.parent.postMessage({
+      type: 'nacl-resize',
+      source: 'schedule',
+      height: h
+    }, '*');
+  }
+
+  // Report on load + after a couple of paint cycles
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  setTimeout(reportHeight, 100);
+  setTimeout(reportHeight, 600);
+  setTimeout(reportHeight, 1500);
+
+  // Watch for content changes (filter changes, games loading, etc.)
+  if (window.ResizeObserver){
+    new ResizeObserver(reportHeight).observe(document.body);
+  } else {
+    // Fallback for very old browsers — poll every second
+    setInterval(reportHeight, 1000);
+  }
+})();
 </script>
 </body>
 </html>

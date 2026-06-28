@@ -39,6 +39,12 @@ body{font-family:Arial, sans-serif;background:#fff;}
 .day-count{font-size:.7rem;font-weight:700;color:#fff;background:#7d1a1a;padding:2px 9px;border-radius:10px;white-space:nowrap;}
 .day-line{flex:1;height:1px;background:#b8a492;}
 
+/* ── Playoff day header ── */
+.day-block.playoff .day-name{color:#8B6914;}
+.day-block.playoff .day-count{background:linear-gradient(135deg,#C5963A,#E8C252);color:#3d2600;}
+.day-block.playoff .day-line{background:#C5963A;}
+.round-label{font-size:.7rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#C5963A,#E8C252);color:#3d2600;padding:2px 10px;border-radius:10px;white-space:nowrap;margin-left:-4px;}
+
 /* ── Game card ── */
 .card{background:#fff;border-radius:8px;box-shadow:0 1px 6px rgba(80,20,20,.07);border:1px solid #eee4dc;padding:10px 14px;margin-bottom:7px;transition:background .15s;}
 .card:hover{background:#faf6f2;}
@@ -56,6 +62,18 @@ body{font-family:Arial, sans-serif;background:#fff;}
 .venue-line a{color:#5c1010;text-decoration:underline;font-weight:700;}
 .venue-line a:hover{color:#7d1a1a;}
 .div-tag{display:inline-block;font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:3px;background:#7d1a1a;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+
+/* ── Playoff card styling ── */
+.card.playoff-card{border:1.5px solid #C5963A;background:linear-gradient(135deg,#FFFDF5,#FFF8E7);box-shadow:0 2px 8px rgba(180,140,40,.12);}
+.card.playoff-card:hover{background:linear-gradient(135deg,#FFF8E7,#FFF3D6);}
+.card.playoff-card .card-head{border-bottom:1px solid #E8D5A8;}
+.card.playoff-card .game-time{color:#8B6914;}
+.card.playoff-card .card-foot{border-top:1px solid #E8D5A8;}
+.card.playoff-card .team-row.win .team-name{color:#6B4F0A;}
+.card.playoff-card .team-row.win .team-score{color:#8B6914;}
+.card.playoff-card .game-status.final{color:#6B4F0A;background:#F0E4C0;}
+.round-tag{display:inline-block;font-size:.55rem;font-weight:700;padding:2px 7px;border-radius:3px;background:linear-gradient(135deg,#C5963A,#E8C252);color:#3d2600;letter-spacing:.05em;text-transform:uppercase;margin-right:4px;}
+.div-tag.playoff-div{background:linear-gradient(135deg,#C5963A,#E8C252);color:#3d2600;}
 
 /* ── Empty / Loading ── */
 .empty{background:#fff;border-radius:10px;border:1px solid #eee4dc;text-align:center;padding:44px 20px;box-shadow:0 2px 10px rgba(80,20,20,.08);}
@@ -136,6 +154,16 @@ var VENUES = {
 
 var DIV_LABELS = {"HS-NY":"HS · NY","HS-NJ":"HS · NJ","JHS":"JHS","Girls":"Girls","College":"College","Mens":"Mens"};
 
+/* ── Playoff round detection ── */
+var PLAYOFF_ROUNDS = {
+  "2026-07-11":"First Round","2026-07-12":"First Round",
+  "2026-07-18":"Semifinals","2026-07-19":"Semifinals",
+  "2026-07-26":"Finals"
+};
+
+function getPlayoffRound(date){return PLAYOFF_ROUNDS[date]||null;}
+function isPlayoff(date){return !!PLAYOFF_ROUNDS[date];}
+
 var GAMES = [];
 
 function loadGames(){
@@ -157,7 +185,11 @@ function loadGames(){
 function stripParens(n){return n.replace(/[()]/g,'');}
 function addHour(t){var p=t.split(' '),hm=p[0].split(':'),h=+hm[0],m=hm[1],ap=p[1],eh=h+1,eap=ap;if(h===11&&ap==='AM')eap='PM';if(h===11&&ap==='PM')eap='AM';if(eh>12)eh-=12;return p[0]+' '+ap+' – '+eh+':'+m+' '+eap;}
 function timeSort(a,b){function to24(t){var p=t.split(' '),hm=p[0].split(':'),h=+hm[0],m=+hm[1];if(p[1]==='PM'&&h!==12)h+=12;if(p[1]==='AM'&&h===12)h=0;return h*60+m;}return to24(a.time)-to24(b.time);}
-function fmtDateLabel(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});}
+function fmtDateLabel(d){
+  var label=new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+  var round=getPlayoffRound(d);
+  return round?'🏆 '+label+' — '+round:label;
+}
 function fmtDateLong(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});}
 
 function buildDateFilter(){
@@ -200,9 +232,18 @@ function render(){
   var h='<div class="statsbar"><div class="badge">'+divLabel+'</div><div class="cnt">'+total+' game'+(total!==1?'s':'')+(venueLink?' &middot; '+venueLink:'')+'</div></div>';
   dates.forEach(function(date){
     var games=byDate[date].sort(timeSort),dl=fmtDateLong(date);
-    h+='<div class="day-block"><div class="day-header"><span class="day-name">'+dl+'</span><span class="day-count">'+games.length+' game'+(games.length!==1?'s':'')+'</span><div class="day-line"></div></div>';
+    var round=getPlayoffRound(date);
+    var dayClass=round?'day-block playoff':'day-block';
+    var roundBadge=round?'<span class="round-label">🏆 '+round+'</span>':'';
+
+    h+='<div class="'+dayClass+'"><div class="day-header"><span class="day-name">'+dl+'</span>'+roundBadge+'<span class="day-count">'+games.length+' game'+(games.length!==1?'s':'')+'</span><div class="day-line"></div></div>';
     games.forEach(function(g){
-      var tr=addHour(g.time),dtag='<span class="div-tag">'+(DIV_LABELS[g.div]||g.div)+'</span>';
+      var tr=addHour(g.time);
+      var playoff=isPlayoff(g.date);
+      var cardClass=playoff?'card playoff-card':'card';
+      var roundTag=playoff?'<span class="round-tag">'+round+'</span>':'';
+      var divTagClass=playoff?'div-tag playoff-div':'div-tag';
+      var dtag=roundTag+'<span class="'+divTagClass+'">'+(DIV_LABELS[g.div]||g.div)+'</span>';
       var t1n=stripParens(g.t1),t2n=stripParens(g.t2);
       var played=(g.s1!=null&&g.s2!=null);
       var t1Win=played&&g.s1>g.s2,t2Win=played&&g.s2>g.s1;
@@ -213,7 +254,7 @@ function render(){
         var vg=VENUES[g.v];
         venueHtml=vg?'<div class="venue-line">📍 <a href="'+vg.url+'" target="_blank">'+vg.name+'</a></div>':'';
       }
-      h+='<div class="card">'
+      h+='<div class="'+cardClass+'">'
        + '<div class="card-head"><span class="game-time">'+tr+'</span>'+statusHtml+'</div>'
        + '<div class="team-row'+(t1Win?' win':'')+'"><span class="team-name">'+t1n+'</span><span class="team-score">'+s1Html+'</span></div>'
        + '<div class="team-row'+(t2Win?' win':'')+'"><span class="team-name">'+t2n+'</span><span class="team-score">'+s2Html+'</span></div>'
@@ -227,47 +268,24 @@ function render(){
 
 loadGames();
 
+/* ── Iframe auto-resize ── */
 function broadcastHeight(){window.parent.postMessage({type:'resize',height:document.body.scrollHeight},'*');}
 window.addEventListener('load',broadcastHeight);
 new MutationObserver(broadcastHeight).observe(document.body,{childList:true,subtree:true});
 setInterval(broadcastHeight,500);
-// ─────────────────────────────────────────────────────────────────────────────
-// IFRAME AUTO-RESIZE — reports current height to parent (ChMeetings)
-// so the iframe shrinks/grows with the filtered game list instead of leaving
-// big empty white space. Parent must run a listener (see deployment notes).
-// ─────────────────────────────────────────────────────────────────────────────
 (function setupAutoResize(){
-  if (window.parent === window) return; // not in iframe, skip
-
-  let lastH = 0;
+  if(window.parent===window)return;
+  var lastH=0;
   function reportHeight(){
-    const h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body ? document.body.scrollHeight : 0
-    );
-    if (h === lastH) return;
-    lastH = h;
-    window.parent.postMessage({
-      type: 'nacl-resize',
-      source: 'schedule',
-      height: h
-    }, '*');
+    var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
+    if(h===lastH)return;lastH=h;
+    window.parent.postMessage({type:'nacl-resize',source:'schedule',height:h},'*');
   }
-
-  // Report on load + after a couple of paint cycles
-  window.addEventListener('load', reportHeight);
-  window.addEventListener('resize', reportHeight);
-  setTimeout(reportHeight, 100);
-  setTimeout(reportHeight, 600);
-  setTimeout(reportHeight, 1500);
-
-  // Watch for content changes (filter changes, games loading, etc.)
-  if (window.ResizeObserver){
-    new ResizeObserver(reportHeight).observe(document.body);
-  } else {
-    // Fallback for very old browsers — poll every second
-    setInterval(reportHeight, 1000);
-  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+  setTimeout(reportHeight,100);setTimeout(reportHeight,600);setTimeout(reportHeight,1500);
+  if(window.ResizeObserver){new ResizeObserver(reportHeight).observe(document.body);}
+  else{setInterval(reportHeight,1000);}
 })();
 </script>
 </body>
